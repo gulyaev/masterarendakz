@@ -1,0 +1,18 @@
+.footer {
+  background-color: #77608d;
+  display: grid;
+  grid-area: footer;
+  padding: 15px;
+  grid-template: 1fr/1fr minmax(auto, 100px) minmax(auto, 1100px) 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+.footer__copy {
+  grid-column: 2/3;
+}
+.footer__text {
+  grid-column: 3/4;
+  text-align: right;
+}
