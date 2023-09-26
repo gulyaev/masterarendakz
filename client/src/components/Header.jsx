@@ -8,7 +8,10 @@ const Header = () => {
             <nav className={classes.header__menu}>
                 <ul className={classes.header__list}>
                     <li>
-                        <a href="#" className={classes.header__link}>Консультация</a>
+                        <a href="#" className={classes.header__link}>Услуги</a>
+                    </li>
+                    <li>
+                        <a href="#" className={classes.header__link}>Сотрудничество</a>
                     </li>
                     <li>
                         <a href="#" className={classes.header__link}>Вакансии</a>
