@@ -1,0 +1,22 @@
+.profileinfo {
+    margin: 0 0 20px 0;
+}
+
+.profileinfoimg {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 0 20px 0;
+}
+
+.profileinfoimg img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;	
+    top: 0;
+    left: 0;
+}

@@ -8,8 +8,14 @@
         &__item {
             position: relative;
             font-weight: bold;
+            font-size: 15px;
             margin: 0 0 10px 0;
+            color: #000;
         }
+
+        &__item.active {
+            color: #387434;
+          }
 
         &__item.active::before {
             content: "";

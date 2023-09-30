@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
     return (
         <header className={classes.header}>
-            <NavLink to="/gallery" className={classes.header__logo}>
+            <NavLink to="/" className={classes.header__logo}>
                 <img src={require("../img/masterarenda.PNG")} alt="masterarendakz" />
             </NavLink>
             <nav className={classes.header__menu}>

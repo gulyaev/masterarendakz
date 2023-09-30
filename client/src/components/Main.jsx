@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile/Profile";
 import Gallery from "./Gallery";
 import Services from "./Services";
-import Dialogs from "./Dialogs";
+import Dialogs from "./Dialogs/Dialogs";
 import classes from "../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -52,6 +52,8 @@ const Main = () => {
                     <Route path="/services" element={<Services />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/dialogs" element={<Dialogs />} />
+                    <Route path="/dialogs/:id" element={<Dialogs />} />
+                    <Route exact path="/" element={<Gallery />} />
                 </Routes>
             </section>
         </div>

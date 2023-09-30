@@ -8,7 +8,12 @@
 .dialogs .users__item {
   position: relative;
   font-weight: bold;
+  font-size: 15px;
   margin: 0 0 10px 0;
+  color: #000;
+}
+.dialogs .users__item.active {
+  color: #387434;
 }
 .dialogs .users__item.active::before {
   content: "";
