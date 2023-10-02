@@ -14,22 +14,24 @@ const Main = () => {
                 <nav className={classes.sidebar__menu}>
                     <ul className={classes.sidebar__list}>
                         <li className={classes.sidebar__link}>
-                            <NavLink to="/gallery">
+                            <NavLink className={classes.sidebar__link} to="/profile">
                                 Главная
                             </NavLink>
                         </li>
                         <li className={classes.sidebar__link}>
-                            <NavLink to="/profile">
+                            <NavLink className={classes.sidebar__link} to="/gallery">
+                                Сдам в аренду
+                            </NavLink>
+                        </li>
+                        <li className={classes.sidebar__link}>
+                            <NavLink className={classes.sidebar__link} to="/profile">
                                 О проекте
                             </NavLink>
                         </li>
                         <li className={classes.sidebar__link}>
-                            <NavLink to="/dialogs">
+                            <NavLink className={classes.sidebar__link} to="/dialogs">
                                 Диалоги
                             </NavLink>
-                        </li>
-                        <li>
-                            <a href="#" className={classes.sidebar__link}>Вакансии</a>
                         </li>
                         <li>
                             <a href="#" className={classes.sidebar__link}>Реклама</a>
@@ -53,7 +55,7 @@ const Main = () => {
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/dialogs" element={<Dialogs />} />
                     <Route path="/dialogs/:id" element={<Dialogs />} />
-                    <Route exact path="/" element={<Gallery />} />
+                    <Route exact path="/" element={<Profile />} />
                 </Routes>
             </section>
         </div>

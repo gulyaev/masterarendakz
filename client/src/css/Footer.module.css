@@ -3,16 +3,23 @@
   display: grid;
   grid-area: footer;
   padding: 15px;
-  grid-template: 1fr/1fr minmax(auto, 100px) minmax(auto, 1100px) 1fr;
+  grid-template: 1fr 1fr/1fr minmax(auto, 200px) minmax(auto, 1100px) 1fr;
+  grid-template-areas: ". above above above" "copy . . text";
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
 }
-.footer__copy {
+.footer .above {
+  grid-area: above;
+  margin: 0 0 10px 0;
+}
+.footer .copy {
+  grid-area: copy;
   grid-column: 2/3;
 }
-.footer__text {
+.footer .text {
+  grid-area: text;
   grid-column: 3/4;
   text-align: right;
 }

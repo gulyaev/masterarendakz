@@ -1,6 +1,6 @@
 .header {
   grid-area: header;
-  background-color: #387434;
+  background-color: #77608d;
   padding: 15px;
   display: grid;
   grid-template: 1fr/1fr minmax(auto, 100px) minmax(auto, 1100px) 1fr;
