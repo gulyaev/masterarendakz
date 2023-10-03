@@ -80,6 +80,9 @@ const ProfileInfo = () => {
 
     return (
         <div className={classes.profileinfo}>
+            <div className={classes.content__title}>
+                <Title>Актуальное</Title>
+            </div>
             <div className={classes.profileinfo__ourClients + " " + classes.ourClients}>
                 <Title>Наши клиенты и спонсоры</Title>
                 <div className={classes.ourClients__clientCard}>

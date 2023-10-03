@@ -7,9 +7,6 @@ const Gallery = () => {
     return (
         <div>
             <div className={classes.content__title}>
-                <Title>Актуальное</Title>
-            </div>
-            <div className={classes.content__title}>
                 <Title>Все варианты аренды</Title>
             </div>
             <section className={classes.gallery + " " + classes.gallery}>

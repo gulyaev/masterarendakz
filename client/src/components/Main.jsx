@@ -7,7 +7,8 @@ import classes from "../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-const Main = () => {
+const Main = (props) => {
+
     return (
         <div className={classes.main}>
             <aside className={classes.sidebar}>
@@ -23,6 +24,9 @@ const Main = () => {
                                 Сдам в аренду
                             </NavLink>
                         </li>
+                        <li>
+                            <a href="#" className={classes.sidebar__link}>Статистика</a>
+                        </li>
                         <li className={classes.sidebar__link}>
                             <NavLink className={classes.sidebar__link} to="/profile">
                                 О проекте
@@ -33,29 +37,17 @@ const Main = () => {
                                 Диалоги
                             </NavLink>
                         </li>
-                        <li>
-                            <a href="#" className={classes.sidebar__link}>Реклама</a>
-                        </li>
-                        <li>
-                            <a href="#" className={classes.sidebar__link}>Арендодателям</a>
-                        </li>
-                        <li>
-                            <a href="#" className={classes.sidebar__link}>Статистика</a>
-                        </li>
-                        <li>
-                            <a href="#" className={classes.sidebar__link}>Акции и скидки</a>
-                        </li>
                     </ul>
                 </nav>
             </aside>
             <section className={classes.content}>
                 <Routes>
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={<Profile postsData={props.postsData} />} />
+                    <Route exact path="/" element={<Profile postsData={props.postsData} />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/gallery" element={<Gallery />} />
-                    <Route path="/dialogs" element={<Dialogs />} />
-                    <Route path="/dialogs/:id" element={<Dialogs />} />
-                    <Route exact path="/" element={<Profile />} />
+                    <Route path="/dialogs" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
+                    <Route path="/dialogs/:id" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
                 </Routes>
             </section>
         </div>
