@@ -7,8 +7,8 @@ import classes from "../../css/Dialogs.module.css";
 const Dialogs = (props) => {
 
 
-    let dialogsElements = props.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
-    let messagesElements = props.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
+    let dialogsElements = props.state.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
+    let messagesElements = props.state.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
 
     return (
         <div className={classes.dialogs}>

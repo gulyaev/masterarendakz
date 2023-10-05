@@ -42,12 +42,12 @@ const Main = (props) => {
             </aside>
             <section className={classes.content}>
                 <Routes>
-                    <Route path="/profile" element={<Profile postsData={props.postsData} />} />
-                    <Route exact path="/" element={<Profile postsData={props.postsData} />} />
+                    <Route path="/profile" element={<Profile state={props.appState.profilePage} />} />
+                    <Route exact path="/" element={<Profile state={props.appState.profilePage} />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/gallery" element={<Gallery />} />
-                    <Route path="/dialogs" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
-                    <Route path="/dialogs/:id" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
+                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} />} />
+                    <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                 </Routes>
             </section>
         </div>
