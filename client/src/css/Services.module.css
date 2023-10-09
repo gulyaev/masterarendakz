@@ -1,18 +1,18 @@
-.profileinfo {
+.services {
   margin: 0 0 30px 0;
 }
-.profileinfo__divider {
+.services__divider {
   border: 1px solid #DCDCDC;
   margin: 0 0 100px 0;
 }
-.profileinfo__linkToGallery {
+.services__linkToGallery {
   display: grid;
   grid-template: 1fr/1fr 3fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-.profileinfo__profileinfoimg {
+.services__servicesimg {
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -21,7 +21,7 @@
   background-color: #fff;
   margin: 0 0 20px 0;
 }
-.profileinfo__profileinfoimg img {
+.services__servicesimg img {
   max-width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -30,18 +30,18 @@
   top: 0;
   left: 0;
 }
-.profileinfo__trueLink:hover {
+.services__trueLink:hover {
   text-decoration: underline;
 }
-.profileinfo .recrut {
+.services .recrut {
   display: grid;
   grid-template: 1fr/3fr 2fr;
   margin: 0 0 100px 0;
 }
-.profileinfo .recrut__title {
+.services .recrut__title {
   margin: 0 20px 0 0;
 }
-.profileinfo .recrut__services {
+.services .recrut__services {
   width: 360px;
   height: 290px;
   overflow: hidden;
@@ -49,7 +49,7 @@
   background-color: #fff;
   margin: 0 0 20px 0;
 }
-.profileinfo .recrut__services img {
+.services .recrut__services img {
   max-width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -58,14 +58,14 @@
   top: 0;
   left: 0;
 }
-.profileinfo .arenda {
+.services .arenda {
   display: grid;
   grid-template: 1fr/3fr 2fr;
 }
-.profileinfo .arenda__title {
+.services .arenda__title {
   margin: 0 20px 0 0;
 }
-.profileinfo .arenda__services {
+.services .arenda__services {
   width: 360px;
   height: 290px;
   overflow: hidden;
@@ -73,7 +73,7 @@
   background-color: #fff;
   margin: 0 0 20px 0;
 }
-.profileinfo .arenda__services img {
+.services .arenda__services img {
   max-width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -82,16 +82,26 @@
   top: 0;
   left: 0;
 }
-.profileinfo__whychoseus {
+.services__whychoseus {
   margin: 0 0 100px 0;
 }
-.profileinfo__positions {
+.services__positions {
   margin: 0 0 100px 0;
 }
-.profileinfo__otherhr {
+.services .positions__list li {
+  background: green;
+  padding: 5px;
+  margin-bottom: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+.services .positions__row {
+  margin-bottom: 15px;
+}
+.services__otherhr {
   margin: 0 0 100px 0;
 }
-.profileinfo .ourClients__clientCard {
+.services .ourClients__clientCard {
   display: grid;
   grid-template: 1fr/1fr 1fr 1fr 1fr;
 }

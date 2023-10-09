@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import classes from "../../../css/Profileinfo.module.css";
-import { NavLink } from "react-router-dom";
+import classes from "../../css/Services.module.css";
 import { Button, Modal } from 'antd';
 import { Card, Col, Row } from 'antd';
 import { Divider, Steps } from 'antd';
 import { Collapse } from 'antd';
 import { WhatsAppOutlined } from '@ant-design/icons';
+import { NavLink } from "react-router-dom";
 import { Typography } from 'antd';
 const { Title } = Typography;
 
 
-const ProfileInfo = () => {
+const Services = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [current, setCurrent] = useState(0);
     const { Step } = Steps;
@@ -79,50 +79,8 @@ const ProfileInfo = () => {
     };
 
     return (
-        <div className={classes.profileinfo}>
-            <div className={classes.content__title}>
-                <Title>Актуальное</Title>
-            </div>
-            <div className={classes.profileinfo__ourClients + " " + classes.ourClients}>
-                <Title>Наши клиенты и спонсоры</Title>
-                <div className={classes.ourClients__clientCard}>
-                    <Card
-                        hoverable
-                        style={{
-                            width: 240,
-                        }}
-                        cover={<img alt="Ногтевая студия. Заказчик на рекламу вакансий." src={require("../../../img/masterarendakz__deville.jpg")} />}
-                        onClick={() => { }}
-                    >
-                        <Meta title="@deville_nails" description="DE Ville - Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы" />
-                    </Card>
-                    <Card
-                        hoverable
-                        style={{
-                            width: 240,
-                        }}
-                        cover={<img alt="Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы" src={require("../../../img/masterarendakz__gohakali.jpg")} />}
-                        onClick={() => { }}
-                    >
-                        <Meta title="@gohakali" description="Заказчик объявлений по аренде. г.Алматы" />
-                    </Card>
-                </div>
-            </div>
-
-            <div className={classes.profileinfo__linkToGallery}>
-                <div className={classes.profileinfo__profileinfoimg}>
-                    <img src={require("../../../img/masterarenda.PNG")} alt="masterarendakz" />
-                </div>
-                <div>
-                    <NavLink to="/gallery" className={classes.profileinfo__trueLink}>
-                        <Title style={{ color: "#77608d" }}>Ссылка: Все варианты аренды здесь</Title>
-                    </NavLink>
-                </div>
-            </div>
-            <Divider className={classes.profileinfo__divider} />
-
-
-            <div className={classes.profileinfo__arenda + " " + classes.arenda}>
+        <div className={classes.services}>
+            <div className={classes.services__arenda + " " + classes.arenda} style={{ marginBottom: "100px" }}>
                 <div className={classes.recrut__title}>
                     <Title>Предоставляем услуги по подбору помещений для аренды под ваш бизнес</Title>
                     <Title level={4}>Подберём помещение для вашего бизнеса под ваши требования и пожелания.</Title>
@@ -141,16 +99,45 @@ const ProfileInfo = () => {
                     </Modal>
                 </div>
                 <div className={classes.recrut__services}>
-                    <img src={require("../../../img/masterarendamain.png")} alt="masterarendakz" />
+                    <img src={require("../../img/masterarendamain.png")} alt="masterarendakz" />
+                </div>
+            </div>
+            <div className={classes.services__arenda + " " + classes.arenda} style={{ marginBottom: "70px" }}>
+                <div className={classes.recrut__title}>
+                    <Title>Предоставляем услуги по сдаче в аренду ваших помещений</Title>
+                    <Title level={4}>Подберём арендаторов для вашего бизнеса под ваши требования и пожелания.</Title>
+                    <Title level={4}>Сделаем рум-тур вашего помещения.</Title>
+                    <Button type="primary" onClick={showModal} size="large" style={{ background: "green", marginBottom: "30px" }}>
+                        Сдать помещение в аренду
+                    </Button>
+                    <Title level={4}>
+                        Или разместим ваше объявление об аренде на наших ресурсах: instagram, телеграмм-каналы, блог. Подробнее в разделе&nbsp;
+                        <NavLink to="/forsellers">
+                            Арендодателям
+                        </NavLink>
+                    </Title>
+                    <Modal title="Для связи с нами напишите нам:" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                        <div style={{ display: 'grid', gridTemplate: '1fr / 1fr 6fr', alignItems: 'center' }} >
+                            <div>
+                                <a href="https://wa.me/79520544878?text=Здравствуйте!%20Я%20с%20сайта%20masterarenda.kz"><WhatsAppOutlined style={{ fontSize: '50px', color: '#387434' }} /></a>
+                            </div>
+                            <div>
+                                <a href="https://wa.me/79520544878?text=Здравствуйте!%20Я%20с%20сайта%20masterarenda.kz">WhatsApp: 89520544878</a>
+                            </div>
+                        </div>
+                    </Modal>
+                </div>
+                <div className={classes.recrut__services}>
+                    <img src={require("../../img/masterarendamain.png")} alt="masterarendakz" />
                 </div>
             </div>
             <div>
                 <Title>Вопросы, которые нам часто задают по аренде</Title>
                 <Collapse items={itemsArenda} defaultActiveKey={['1']} onChange={onChange} />
             </div>
-            <Divider className={classes.profileinfo__divider} />
+            <Divider className={classes.services__divider} />
 
-            <div className={classes.profileinfo__recrut + " " + classes.recrut}>
+            <div className={classes.services__recrut + " " + classes.recrut}>
                 <div className={classes.recrut__title}>
                     <Title>Предоставляем услуги по подбору персонала в сфере бьюти, медицины и менеджмента</Title>
                     <Title level={4}>Подберём компетентных сотрудников для вашего бизнеса с гарантией замены до 3-х месяцев. Первые кандидаты через 3-5 дней.</Title>
@@ -169,12 +156,12 @@ const ProfileInfo = () => {
                     </Modal>
                 </div>
                 <div className={classes.recrut__services}>
-                    <img src={require("../../../img/masterarendamain.png")} alt="masterarendakz" />
+                    <img src={require("../../img/masterarendamain.png")} alt="masterarendakz" />
                 </div>
             </div>
 
 
-            <div className={classes.profileinfo__whychoseus}>
+            <div className={classes.services__whychoseus}>
                 <Title>Почему клиенты доверяют нам подбор персонала</Title>
                 <Row gutter={16}>
                     <Col span={8}>
@@ -212,23 +199,43 @@ const ProfileInfo = () => {
                     Подобрать сотрудников
                 </Button>
             </div>
-            <div className={classes.profileinfo__positions}>
+            <div className={classes.services__positions + " " + classes.positions}>
                 <Title>Какие вакансии мы закрываем</Title>
                 <p>Возьмём на себя все HR-задачи по подбору и оперативно найдём компетентных специалистов под ключ.</p>
-                <Row gutter={16}>
+                <Row gutter={16} className={classes.positions__row}>
                     <Col span={8}>
-                        <Card title="Индустрия красоты" bordered={true} hoverable={true}>
-                            Наши специалисты имеют компетенцию и отлично разбираются в нюансах каждого из представленных направлений.
+                        <Card className={classes.positions__items} title="Индустрия красоты" bordered={true} hoverable={true}>
+                            Наши специалисты имеют компетенцию и отлично разбираются в нюансах каждого из представленных направлений:
+                            <p></p>
+                            <ul className={classes.positions__list}>
+                                <li>Парикмахеры</li>
+                                <li>Lash-мейкеры</li>
+                                <li>Бровисты</li>
+                                <li>Nail мастера</li>
+                            </ul>
                         </Card>
                     </Col>
                     <Col span={8}>
                         <Card title="Медицинский персонал" bordered={false} hoverable={true}>
                             Мы закрываем вакансии в сжатые сроки. Самых первых кандидатов предоставляем в срок от 3 до 5 дней.
+                            <p></p>
+                            <ul className={classes.positions__list}>
+                                <li>Косметологи</li>
+                                <li>Стоматологи</li>
+                                <li>Массажисты</li>
+                            </ul>
                         </Card>
                     </Col>
                     <Col span={8}>
                         <Card title="Управленческий персонал" bordered={false} hoverable={true}>
                             Предоставляем только проверенных кандидатов, прошедших нашу систему отбора.
+                            <p></p>
+                            <ul className={classes.positions__list}>
+                                <li>Администраторы</li>
+                                <li>SMM-специалисты</li>
+                                <li>Маркетологи</li>
+                                <li>Управляющие</li>
+                            </ul>
                         </Card>
                     </Col>
                 </Row>
@@ -236,7 +243,7 @@ const ProfileInfo = () => {
                     Подобрать сотрудников
                 </Button>
             </div>
-            <div className={classes.profileinfo__otherhr}>
+            <div className={classes.services__otherhr}>
                 <Title>Помимо подбора поможем с другими HR задачами</Title>
                 <p>Наша команда поможет с отдельными HR задачами вашей компании.</p>
                 <Row gutter={16}>
@@ -291,4 +298,4 @@ const ProfileInfo = () => {
     )
 }
 
-export default ProfileInfo;
+export default Services;

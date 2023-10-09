@@ -1,0 +1,44 @@
+.forclients {
+  display: grid;
+  grid-template: 1fr/2fr 1fr;
+}
+.forclients__linkToGallery {
+  display: grid;
+  grid-template: 1fr/1fr 3fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 30px 0;
+}
+.forclients__forclientsimg {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  margin: 0 0 0 0;
+}
+.forclients__forclientsimg img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.forclients__forclientssubimg {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  margin: 0 0 0 0;
+}
+.forclients__forclientssubimg img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

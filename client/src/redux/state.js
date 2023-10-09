@@ -1,5 +1,5 @@
 let state = {
-    profilePage: {
+    homePage: {
         postsData: [
             { id: 1, message: 'Подбор персонала в сферах бьюти, медицины и менеджмента', likesCount: 18 },
             { id: 2, message: 'It is my first post', likesCount: 35 },

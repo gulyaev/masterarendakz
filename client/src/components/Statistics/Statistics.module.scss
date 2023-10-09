@@ -1,0 +1,7 @@
+.statistics {
+    &__data {
+        display: grid;
+        grid-template: 1fr / 1fr 3fr;
+        margin-bottom: 50px;
+    }
+}

@@ -6,6 +6,17 @@ const { Title } = Typography;
 const Services = () => {
     return (
         <section className={classes.content__products + " " + classes.products}>
+            <div>Персонал который мы подбираем для вас:</div>
+            <ul>
+                <li>Парикмахер</li>
+                <li>Косметолог</li>
+                <li>Лешмейкер</li>
+                <li>Бровист</li>
+                <li>Визажист</li>
+                <li>Мастер маникюра</li>
+            </ul>
+            <div>Подбор помещений и поиск кабинетов</div>
+            <div>Сдача в аренду кабинетов</div>
             <div className={classes.products__title}>
                 <Title level={2}>Услуги</Title>
             </div>

@@ -1,0 +1,98 @@
+.profileinfo {
+  margin: 0 0 30px 0;
+}
+.profileinfo__divider {
+  border: 1px solid #DCDCDC;
+  margin: 0 0 70px 0;
+}
+.profileinfo__linkToGallery {
+  display: grid;
+  grid-template: 1fr/1fr 3fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 30px 0;
+}
+.profileinfo__profileinfoimg {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0 0 20px 0;
+}
+.profileinfo__profileinfoimg img {
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.profileinfo__trueLink:hover {
+  text-decoration: underline;
+}
+.profileinfo .recrut {
+  display: grid;
+  grid-template: 1fr/3fr 2fr;
+  margin: 0 0 100px 0;
+}
+.profileinfo .recrut__title {
+  margin: 0 20px 0 0;
+}
+.profileinfo .recrut__services {
+  width: 360px;
+  height: 290px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  margin: 0 0 20px 0;
+}
+.profileinfo .recrut__services img {
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.profileinfo .arenda {
+  display: grid;
+  grid-template: 1fr/3fr 2fr;
+}
+.profileinfo .arenda__title {
+  margin: 0 20px 0 0;
+}
+.profileinfo .arenda__services {
+  width: 360px;
+  height: 290px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  margin: 0 0 20px 0;
+}
+.profileinfo .arenda__services img {
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.profileinfo__whychoseus {
+  margin: 0 0 100px 0;
+}
+.profileinfo__positions {
+  margin: 0 0 100px 0;
+}
+.profileinfo__otherhr {
+  margin: 0 0 100px 0;
+}
+.profileinfo .ourClients__clientCard {
+  display: grid;
+  grid-template: 1fr/1fr 1fr 1fr 1fr;
+}

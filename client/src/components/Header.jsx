@@ -11,7 +11,9 @@ const Header = () => {
             <nav className={classes.header__menu}>
                 <ul className={classes.header__list}>
                     <li>
-                        <a href="#" className={classes.header__link}>Блог</a>
+                        <NavLink to="/blog" className={classes.header__link}>
+                            Блог
+                        </NavLink>
                     </li>
                     <li>
                         <NavLink to="/services" className={classes.header__link}>
@@ -19,27 +21,39 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Сотрудничество</a>
+                        <NavLink to="/partner" className={classes.header__link}>
+                            Сотрудничество
+                        </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/services" className={classes.header__link}>
+                        <NavLink to="/study" className={classes.header__link}>
                             Обучение
                         </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Онлайн-школы</a>
+                        <NavLink to="/onlineschools" className={classes.header__link}>
+                            Онлайн-школы
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Вакансии</a>
+                        <NavLink to="/vacancies" className={classes.header__link}>
+                            Вакансии
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Арендодателям</a>
+                        <NavLink to="/forsellers" className={classes.header__link}>
+                            Арендодателям
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Арендаторам</a>
+                        <NavLink to="/forclients" className={classes.header__link}>
+                            Арендаторам
+                        </NavLink>
                     </li>
                     <li>
-                        <a href="#" className={classes.header__link}>Акции</a>
+                        <NavLink to="/sales" className={classes.header__link}>
+                            Акции
+                        </NavLink>
                     </li>
                 </ul>
                 <div className={classes.header__burger}>
