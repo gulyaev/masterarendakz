@@ -6,9 +6,6 @@ const Footer = () => {
         <footer className={classes.footer}>
             <div className={classes.footer__above + " " + classes.above}>
                 Остались вопросы? Оставьте заявку или свяжитесь с нами любым удобным способом.
-                <div>
-                    Connector - объединяем нужных людей
-                </div>
             </div>
             <div className={classes.footer__copy + " " + classes.copy}>
                 CopyRight, 2023

@@ -30,7 +30,21 @@
 }
 
 @media (max-width: 900px) {
-    .header__menu {
-        display: none;
+    .header {
+        &__list {
+            display: none;
+        }
+        &__menu {
+            display: grid;
+            justify-items: end;
+            align-items: center;
+        }
+    
+        &__burger {
+            width: 40px;
+            height: 40px;
+            //background: url('../img/icon.png') 0 0 no-repeat;
+            background-color:#008000;
+        }
     }
 }

@@ -30,7 +30,19 @@
 }
 
 @media (max-width: 900px) {
-  .header__menu {
+  .header__list {
     display: none;
+  }
+  .header__menu {
+    display: grid;
+    justify-items: end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header__burger {
+    width: 40px;
+    height: 40px;
+    background-color: #008000;
   }
 }

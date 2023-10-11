@@ -5,26 +5,50 @@
     padding: 15px;
     grid-template: 1fr 1fr / 1fr minmax(auto, 200px) minmax(auto, 1100px) 1fr;
     grid-template-areas:
-        ". above above above"
-        "copy . . text"
+        "above above"
+        "copy text"
     ;
     align-items: center;
     color:#fff;
+}
 
-    .above {
+
+@media (min-width: 550px) {
+    .footer__above {
         grid-area: above;
         margin: 0 0 10px 0;
+        grid-column: 2/3;
+        grid-column-start: 2;
+        grid-column-end: 4;
     }
 
-    .copy {
+    .footer__copy {
         grid-area: copy;
         grid-column: 2/3;
     }
-    
-    .text {
+
+    .footer__text {
         grid-area: text;
         grid-column: 3/4;
         text-align: right;
     }
+}
+
+@media (max-width: 550px) {
+    .footer {
+        grid-template: 1fr 1fr 1fr/ 1fr;
+        justify-items: center;
+
+        &__above {
+            order: 1;
+        }
+
+        &__text {
+            order: 2;
+        }
     
+        &__copy {
+            order: 3;
+        }
+    }
 }
