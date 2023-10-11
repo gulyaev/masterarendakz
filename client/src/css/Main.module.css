@@ -1,23 +1,8 @@
 .main {
-  padding: 30px 15px;
+  padding: 8px 15px 10px 15px;
 }
 .main .sidebar {
   padding: 0 20px 20px 20px;
-}
-.main .sidebar__list li {
-  margin: 0px 0px 15px 0px;
-}
-.main .sidebar__link {
-  color: #387434;
-  letter-spacing: 2px;
-  text-decoration: none;
-  line-height: 40px;
-  font-weight: bold;
-  font-size: 18px;
-}
-.main .sidebar__link:hover {
-  color: #000;
-  cursor: pointer;
 }
 .main .content {
   padding: 0 0 0 20px;
