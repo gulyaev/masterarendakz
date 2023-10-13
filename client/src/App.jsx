@@ -6,7 +6,6 @@ import Footer from "./components/Footer/Footer";
 import "./css/App.css";
 
 const App = (props) => {
-  debugger;
   return (
     <BrowserRouter>
       <div className="wrapper">
