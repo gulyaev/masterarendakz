@@ -29,49 +29,60 @@ const Header = () => {
                     <nav className={classes.header__menu_active}>
                         <ul className={classes.header__list_active}>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fab icon="blogger" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/blog" className={classes.header__link_active} onClick={handleClick}>
+                                        Блог
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <BarcodeOutlined style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/services" className={classes.header__link_active} onClick={handleClick}>
+                                        Услуги
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fas icon="user-friends" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/partner" className={classes.header__link_active} onClick={handleClick}>
+                                        Сотрудничество
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fas icon="graduation-cap" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/study" className={classes.header__link_active} onClick={handleClick}>
+                                        Обучение
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fab icon="fort-awesome" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/onlineschools" className={classes.header__link_active} onClick={handleClick}>
+                                        Онлайн-школы
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fas icon="map-signs" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/vacancies" className={classes.header__link_active} onClick={handleClick}>
+                                        Вакансии
+                                    </NavLink>
+                                </span>
                             </li>
                             <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
-                            </li>
-                            <li>
-                                <a href="#" className={classes.header__link_active}>Link1</a>
+                                <MDBIcon fas icon="sitemap" style={{ fontSize: '25px', marginRight: "10px", color: "#fff" }} />
+                                <span>
+                                    <NavLink to="/about" className={classes.header__link_active} onClick={handleClick}>
+                                        О проекте
+                                    </NavLink>
+                                </span>
                             </li>
                         </ul>
                     </nav>
