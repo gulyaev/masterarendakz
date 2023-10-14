@@ -3,8 +3,11 @@ import classes from "../../../css/HomeInfo.module.css";
 import { NavLink } from "react-router-dom";
 import { Card } from 'antd';
 import { Divider, Steps } from 'antd';
+import MediaQuery from 'react-responsive'
+import { MDBIcon } from 'mdbreact';
 import { Typography } from 'antd';
 const { Title } = Typography;
+
 
 
 const HomeInfo = () => {
@@ -76,60 +79,91 @@ const HomeInfo = () => {
     };
 
     return (
-        <div className={classes.profileinfo}>
-            <div className={classes.content__title}>
+        <div className={classes.homeinfo}>
+            <div className={classes.homeinfo__title}>
                 <Title>Актуальное</Title>
             </div>
-            <div className={classes.profileinfo__ourClients + " " + classes.ourClients} style={{ marginBottom: "30px" }}>
-                <Title>Наши клиенты и спонсоры</Title>
-                <div className={classes.ourClients__clientCard}>
-                    <Card
-                        hoverable
-                        style={{
-                            width: 240,
-                        }}
-                        cover={<img alt="Ногтевая студия. Заказчик на рекламу вакансий." src={require("../../../img/masterarendakz__deville.jpg")} />}
-                        onClick={() => { }}
-                    >
-                        <Meta title="@deville_nails" description="DE Ville - Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы" />
-                    </Card>
-                    <Card
-                        hoverable
-                        style={{
-                            width: 240,
-                        }}
-                        cover={<img alt="Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы" src={require("../../../img/masterarendakz__gohakali.jpg")} />}
-                        onClick={() => { }}
-                    >
-                        <Meta title="@gohakali" description="Ногтевая студия. Заказчик объявлений по аренде. г.Алматы" />
-                    </Card>
-                    <Card
-                        hoverable
-                        style={{
-                            width: 240,
-                        }}
-                        cover={<img alt="Студия восковой и сахарной лепиляции. Заказчик рекламы по аренде. г.Караганда" src={require("../../../img/masterarendakz_ainur.jpeg")} />}
-                        onClick={() => { }}
-                    >
-                        <Meta title="@sugaring_karaganda_ainur" description="Студия восковой и сахарной лепиляции. Заказчик рекламы по аренде. г.Караганда" />
-                    </Card>
-                </div>
+            <div className={classes.homeinfo__ourClients + " " + classes.ourClients} style={{ marginBottom: "30px" }}>
+                <MediaQuery maxWidth={500}>
+                    <Title style={{ fontSize: '6vw' }}>Наши клиенты и спонсоры</Title>
+                </MediaQuery>
+                <MediaQuery minWidth={500}>
+                    <Title>Наши клиенты и спонсоры</Title>
+                </MediaQuery>
             </div>
-            <div className={classes.profileinfo__linkToGallery}>
-                <div className={classes.profileinfo__profileinfoimg}>
+            <div className={classes.homeinfo__clientCard}>
+                <Card
+                    hoverable
+                    cover={
+                        <div style={{ overflow: "hidden", height: "500px" }}>
+                            <img
+                                alt="Ногтевая студия. Заказчик на рекламу вакансий."
+                                style={{ objectFit: "cover", maxWidth: "100%" }}
+                                src={require("../../../img/masterarendakz__deville.jpg")}
+                            />
+                        </div>
+                    }
+                    onClick={() => { }}
+
+                >
+                    <Meta title="@deville_nails" description="DE Ville - Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы" />
+                </Card>
+
+                <Card
+                    hoverable
+                    cover={
+                        <div style={{ overflow: "hidden", height: "500px" }}>
+                            <img
+                                alt="Ногтевая студия. Заказчик на рекламу вакансий. г.Алматы"
+                                style={{ objectFit: "cover", maxWidth: "100%" }}
+                                src={require("../../../img/masterarendakz__gohakali.jpg")}
+                            />
+                        </div>
+                    }
+                    onClick={() => { }}
+                >
+                    <Meta title="@gohakali" description="Ногтевая студия. Заказчик объявлений по аренде. г.Алматы" />
+                </Card>
+
+                <Card
+                    hoverable
+                    cover={
+                        <div style={{ overflow: "hidden", height: "500px" }}>
+                            <img
+                                alt="Студия восковой и сахарной лепиляции. Заказчик рекламы по аренде. г.Караганда"
+                                style={{ objectFit: "cover", maxWidth: "100%" }}
+                                src={require("../../../img/masterarendakz_ainur.jpeg")}
+                            />
+                        </div>
+                    }
+                    onClick={() => { }}
+                >
+                    <Meta title="@sugaring_karaganda_ainur" description="Студия восковой и сахарной лепиляции. Заказчик рекламы по аренде. г.Караганда" />
+                </Card>
+            </div>
+
+            <Divider className={classes.homeinfo__divider} />
+
+            <div className={classes.homeinfo__linkToGallery + " " + classes.linkToGallery}>
+                <div className={classes.linkToGallery__img}>
                     <img src={require("../../../img/masterarenda.PNG")} alt="masterarendakz" />
                 </div>
-                <div>
-                    <NavLink to="/gallery" className={classes.profileinfo__trueLink}>
-                        <Title style={{ color: "#77608d" }}>Ссылка: Все варианты аренды здесь</Title>
+                <div className={classes.linkToGallery__uberlink}>
+                    <MediaQuery maxWidth={500}>
+                        <NavLink to="/gallery" className={classes.linkToGallery__link}>
+                            <Title style={{ color: "#008000", fontSize: '6vw' }}>Все варианты аренды здесь</Title>
+                        </NavLink>
+                    </MediaQuery>
+                    <MediaQuery minWidth={500}>
+                        <NavLink to="/gallery" className={classes.linkToGallery__link}>
+                            <Title style={{ color: "#008000" }}>Все варианты аренды здесь</Title>
+                        </NavLink>
+                    </MediaQuery>
+                    <NavLink to="/gallery">
+                        <MDBIcon className={classes.linkToGallery__pointer} fas icon="hand-point-up" size='3x' />
                     </NavLink>
                 </div>
-            </div>
-            <Divider className={classes.profileinfo__divider} />
-            <div className={classes.content__title}>
-                <NavLink to="/services" className={classes.profileinfo__trueLink}>
-                    <Title style={{ color: "#77608d" }}>Ссылка: Услуги, которые мы предоставляем</Title>
-                </NavLink>
+                <div className={classes.linkToGallery__empty}></div>
             </div>
         </div>
     )
