@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../Home/Home";
-import Gallery from "../Gallery";
+import Gallery from "../Gallery/Gallery";
 import Services from "../Services/Services";
 import Statistics from "../Statistics/Statistics";
 import Dialogs from "../Dialogs/Dialogs";
