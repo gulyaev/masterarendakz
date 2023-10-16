@@ -93,6 +93,8 @@
     }
 }
 
+
+
 @media (min-width: 500px) {
     .linkToGallery {
         display: grid;
@@ -133,7 +135,7 @@
     }
 }
 
-@media (max-width: 645px) {
+@media (max-width: 375px) {
     .linkToGallery {
         display: grid;
         //grid-template: 1fr / minmax(auto, 200px) 2fr 1fr;

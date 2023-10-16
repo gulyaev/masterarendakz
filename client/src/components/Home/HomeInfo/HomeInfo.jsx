@@ -3,7 +3,7 @@ import classes from "../../../css/HomeInfo.module.css";
 import { NavLink } from "react-router-dom";
 import { Card } from 'antd';
 import { Divider, Steps } from 'antd';
-import MediaQuery from 'react-responsive'
+import MediaQuery from 'react-responsive';
 import { MDBIcon } from 'mdbreact';
 import { Typography } from 'antd';
 const { Title } = Typography;

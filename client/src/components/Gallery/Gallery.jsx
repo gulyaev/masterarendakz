@@ -3,7 +3,7 @@ import classes from "../../css/Gallery.module.css";
 import { NavLink } from 'react-router-dom';
 import { Button, Tag } from 'antd';
 import { MDBIcon } from 'mdbreact';
-import { Image } from 'antd';
+import MediaQuery from 'react-responsive';
 import { Typography } from 'antd';
 const { Title, Text } = Typography;
 
@@ -11,10 +11,20 @@ const Gallery = () => {
     return (
         <div className={classes.gallery}>
             <NavLink to="/forsellers">
-                <Button type="primary" block size="large" className={classes.gallery__topbutton}>
-                    СДАТЬ В АРЕНДУ КАБИНЕТ / КРЕСЛО / СТОЛ / КУШЕТКУ / САЛОН
-                    <MDBIcon className={classes.gallery__pointer} fas icon="hand-point-up" size='2x' />
-                </Button>
+                <MediaQuery maxWidth={568}>
+                    <Button type="primary" block size="large" className={classes.gallery__topbutton}>
+                        СДАТЬ В АРЕНДУ ОБЪЕКТ
+                        <MDBIcon className={classes.gallery__pointer} fas icon="hand-point-up" size='2x' />
+                    </Button>
+                </MediaQuery>
+
+                <MediaQuery minWidth={569}>
+                    <Button type="primary" block size="large" className={classes.gallery__topbutton}>
+                        СДАТЬ В АРЕНДУ КАБИНЕТ / КРЕСЛО / СТОЛ / КУШЕТКУ / САЛОН
+                        <MDBIcon className={classes.gallery__pointer} fas icon="hand-point-up" size='2x' />
+                    </Button>
+                </MediaQuery>
+
             </NavLink>
             <div className={classes.gallery__title}>
                 <Title level={2}>Галерея аренды:</Title>

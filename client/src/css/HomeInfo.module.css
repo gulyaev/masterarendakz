@@ -114,7 +114,7 @@
             transform: rotate(-15deg);
   }
 }
-@media (max-width: 645px) {
+@media (max-width: 375px) {
   .linkToGallery {
     display: grid;
     -webkit-box-align: center;

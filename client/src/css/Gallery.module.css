@@ -78,3 +78,39 @@
     text-align: justify;
   }
 }
+@media (max-width: 380px) {
+  .gallery__topbutton {
+    background: #008000;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .gallery__pointer {
+    position: absolute;
+    right: 60px;
+    top: 0px;
+  }
+}
+@media (max-width: 568px) {
+  .gallery__topbutton {
+    background: #008000;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .gallery__pointer {
+    position: absolute;
+    right: 60px;
+    top: 0px;
+  }
+}
+@media (min-width: 569px) {
+  .gallery__topbutton {
+    background: #008000;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .gallery__pointer {
+    position: absolute;
+    right: 60px;
+    top: 0px;
+  }
+}

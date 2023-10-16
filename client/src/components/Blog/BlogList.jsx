@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../css/Blog.module.css";
+import classes from "../../css/Blog.module.css";
 
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { Avatar, List, Space } from 'antd';
@@ -9,7 +9,7 @@ const data = Array.from({
 }).map((_, i) => ({
     href: '/blog/1',
     title: `ПЛЮСЫ СДАЧИ ПОМЕЩЕНИЯ В АРЕНДУ ПОД САЛОН`,
-    avatar: require("../img/masterarenda.PNG"),
+    avatar: require("../../img/masterarenda.PNG"),
     description:
         'ХОТИТЕ СДАТЬ СВОЕ ПОМЕЩЕНИЕ В АРЕНДУ? ПОЧЕМУ БЫ НЕ СДАТЬ ЕГО ПОД САЛОН ?',
     content:

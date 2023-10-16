@@ -1,6 +1,6 @@
 .forselers {
-    display: grid;
-    grid-template: 1fr / 2fr 1fr;
+    //display: grid;
+    //grid-template: 1fr / 2fr 1fr;
 
     &__forselersimg {
         width: 400px;
@@ -19,5 +19,20 @@
         position: absolute;	
         top: 0;
         left: 0;
+    }
+}
+
+@media (min-width: 770px) {
+    .forselers {
+        display: grid;
+        grid-template: 1fr / 2fr 1fr;
+    }
+}
+
+@media (max-width: 435px) {
+    .forselers {
+        &__forselersimg {
+            width: 100%;
+        }
     }
 }

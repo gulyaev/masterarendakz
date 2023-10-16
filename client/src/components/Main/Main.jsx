@@ -8,8 +8,9 @@ import classes from "../../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import About from "../About";
-import Blog from "../blog/Blog";
-import BlogList from "../BlogList";
+import BlogList from "../Blog/BlogList";
+import Blog1 from "../Blog/Blog1";
+import Blog2 from "../Blog/Blog2";
 import Partner from "../Partner/Partner";
 import Study from "../Study/Study";
 import OnlineSchools from "../OnlineSchools/OnlineSchools";
@@ -19,61 +20,133 @@ import Forclients from "../Forclients/Forclients";
 import Sales from "../Sales/Sales";
 import { HomeOutlined, PieChartOutlined, LineChartOutlined, BookOutlined, EnvironmentOutlined, ExpandOutlined, SoundOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import MediaQuery from 'react-responsive';
 
 const Main = (props) => {
     return (
         <div className={classes.main}>
             <aside className={classes.sidebar}>
                 <nav className={classes.sidebar__menu}>
-                    <Menu mode="vertical" defaultSelectedKeys={['1']} style={{
-                        width: 200,
-                        color: "green",
-                        size: "100px",
-                        fontSize: "16px",
-                    }}>
-                        <Menu.Item key="1">
-                            <HomeOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/home">
-                                Главная
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="2">
-                            <PieChartOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/gallery">
-                                Сдам в аренду
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="3">
-                            <LineChartOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/statistics">
-                                Статистика
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="4">
-                            <EnvironmentOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/forsellers">
-                                Арендодателям
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="5">
-                            <ExpandOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/forclients">
-                                Арендаторам
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="6">
-                            <SoundOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/sales">
-                                Акции
-                            </NavLink></span>
-                        </Menu.Item>
-                        <Menu.Item key="7">
-                            <BookOutlined style={{ fontSize: '18px' }} />
-                            <span><NavLink to="/dialogs">
-                                Диалоги
-                            </NavLink></span>
-                        </Menu.Item>
-                    </Menu>
+                    <MediaQuery minWidth={568}>
+                        <Menu mode="vertical" defaultSelectedKeys={['1']} style={{
+                            width: 200,
+                            color: "green",
+                            size: "100px",
+                            fontSize: "16px"
+                        }}>
+                            <Menu.Item key="1">
+                                <HomeOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/home">
+                                    Главная
+                                </NavLink></span>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <PieChartOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/gallery">
+                                    Сдам в аренду
+                                </NavLink></span>
+                            </Menu.Item>
+                            {/*
+                                <Menu.Item key="3">
+                                <LineChartOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/statistics">
+                                    Статистика
+                                </NavLink></span>
+                            </Menu.Item>
+                    */}
+                            <Menu.Item key="4">
+                                <EnvironmentOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/forsellers">
+                                    Арендодателям
+                                </NavLink></span>
+                            </Menu.Item>
+                            {/*
+                            <Menu.Item key="5">
+                                <ExpandOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/forclients">
+                                    Арендаторам
+                                </NavLink></span>
+                            </Menu.Item>
+                            */}
+
+                            <Menu.Item key="6">
+                                <SoundOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/sales">
+                                    Акции
+                                </NavLink></span>
+                            </Menu.Item>
+
+                            {/*
+                                <Menu.Item key="7">
+                                <BookOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/dialogs">
+                                    Диалоги
+                                </NavLink></span>
+                            </Menu.Item>
+                            */}
+
+                        </Menu>
+                    </MediaQuery>
+
+                    <MediaQuery maxWidth={568}>
+                        <Menu mode="vertical" defaultSelectedKeys={['1']} style={{
+                            color: "green",
+                            size: "100px",
+                            fontSize: "16px"
+                        }}>
+                            <Menu.Item key="1">
+                                <HomeOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/home">
+                                    Главная
+                                </NavLink></span>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <PieChartOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/gallery">
+                                    Сдам в аренду
+                                </NavLink></span>
+                            </Menu.Item>
+                            {/*
+                                <Menu.Item key="3">
+                                <LineChartOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/statistics">
+                                    Статистика
+                                </NavLink></span>
+                            </Menu.Item>
+                    */}
+                            <Menu.Item key="4">
+                                <EnvironmentOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/forsellers">
+                                    Арендодателям
+                                </NavLink></span>
+                            </Menu.Item>
+                            {/*
+                            <Menu.Item key="5">
+                                <ExpandOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/forclients">
+                                    Арендаторам
+                                </NavLink></span>
+                            </Menu.Item>
+                            */}
+
+                            <Menu.Item key="6">
+                                <SoundOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/sales">
+                                    Акции
+                                </NavLink></span>
+                            </Menu.Item>
+
+                            {/*
+                            <Menu.Item key="7">
+                                <BookOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/dialogs">
+                                    Диалоги
+                                </NavLink></span>
+                            </Menu.Item>
+                            */}
+
+                        </Menu>
+                    </MediaQuery>
                 </nav>
             </aside>
             <section className={classes.content}>
@@ -85,7 +158,8 @@ const Main = (props) => {
                     <Route path="/statistics" element={<Statistics />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/blog" element={<BlogList />} />
-                    <Route path="/blog/:id" element={<Blog />} />
+                    <Route path="/blog/2" element={<Blog2 />} />
+                    <Route path="/blog/1" element={<Blog1 />} />
                     <Route path="/partner" element={<Partner />} />
                     <Route path="/study" element={<Study />} />
                     <Route path="/onlineschools" element={<OnlineSchools />} />

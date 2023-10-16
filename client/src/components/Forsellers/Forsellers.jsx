@@ -48,7 +48,7 @@ const Forsellers = () => {
         <div>
             <div className={classes.forselers}>
                 <div className={classes.forselers__title}>
-                    <Title>Как подать объявление об аренде и какие условия ?</Title>
+                    <Title >Как подать объявление об аренде и какие условия ?</Title>
                     <Title level={4} style={{ marginBottom: "20px" }}>Нужны сотрудники на аренду? Разместите объявление у нас!</Title>
                     <Button type="primary" onClick={showModal} size="large" style={{ background: "green", marginBottom: "100px" }}>
                         Разместить аренду
@@ -63,41 +63,50 @@ const Forsellers = () => {
                             </div>
                         </div>
                     </Modal>
-                    <Title>Полезная информация для арендодателей: </Title>
+                    {
+                        //<Title>Полезная информация для арендодателей: </Title>
+                    }
+
                 </div>
                 <div className={classes.forselers__forselersimg}>
                     <img src={require("../../img/masterarendakz.JPG")} alt="masterarendakz" />
                 </div>
             </div>
-            <List
-                itemLayout="vertical"
-                size="default"
-                dataSource={data}
-                renderItem={(item) => (
-                    <List.Item
-                        key={item.title}
-                        actions={[
-                            <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-                            <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-                            <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-                        ]}
-                        extra={
-                            <img
-                                width={272}
-                                alt="logo"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                            />
-                        }
-                    >
-                        <List.Item.Meta
-                            avatar={<Avatar src={item.avatar} />}
-                            title={<a href={item.href}>{item.title}</a>}
-                            description={item.description}
+            {
+                /*
+                <List
+                            itemLayout="vertical"
+                            size="default"
+                            dataSource={data}
+                            renderItem={(item) => (
+                                <List.Item
+                                    key={item.title}
+                                    actions={[
+                                        <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
+                                        <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
+                                        <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+                                    ]}
+                                    extra={
+                                        <img
+                                            width={272}
+                                            alt="logo"
+                                            src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                        />
+                                    }
+                                >
+                                    <List.Item.Meta
+                                        avatar={<Avatar src={item.avatar} />}
+                                        title={<a href={item.href}>{item.title}</a>}
+                                        description={item.description}
+                                    />
+                                    {item.content}
+                                </List.Item>
+                            )}
                         />
-                        {item.content}
-                    </List.Item>
-                )}
-            />
+                */
+            }
+
+
         </div>
     )
 }

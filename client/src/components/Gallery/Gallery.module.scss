@@ -1,5 +1,4 @@
 .gallery {
-
     &__topbutton {
         background:#008000; 
         margin-bottom: 30px;
@@ -96,6 +95,57 @@
                 width: 350px;
                 text-align: justify;
             }
+        }
+    }
+}
+
+//настройка иконки руки only
+@media (max-width: 380px) {
+    .gallery {
+        &__topbutton {
+            background:#008000; 
+            margin-bottom: 30px;
+            position: relative;
+        }
+    
+        &__pointer {
+            position: absolute;
+            right: 60px;
+            top: 0px;
+        }
+    }
+}
+
+//настройка иконки руки only
+@media (max-width: 568px) {
+    .gallery {
+        &__topbutton {
+            background:#008000; 
+            margin-bottom: 30px;
+            position: relative;
+        }
+    
+        &__pointer {
+            position: absolute;
+            right: 60px;
+            top: 0px;
+        }
+    }
+}
+
+//настройка иконки руки only
+@media (min-width: 569px) {
+    .gallery {
+        &__topbutton {
+            background:#008000; 
+            margin-bottom: 30px;
+            position: relative;
+        }
+    
+        &__pointer {
+            position: absolute;
+            right: 60px;
+            top: 0px;
         }
     }
 }

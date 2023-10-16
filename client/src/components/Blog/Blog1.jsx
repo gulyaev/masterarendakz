@@ -3,7 +3,7 @@ import classes from "../../css/Blog.module.css";
 import { Typography } from 'antd';
 const { Title, Paragraph } = Typography;
 
-const Blog = () => {
+const Blog1 = () => {
     return (
         <div className={classes.blog}>
             <div className={classes.blog__title}>
@@ -52,4 +52,4 @@ const Blog = () => {
     )
 }
 
-export default Blog;
+export default Blog1;
