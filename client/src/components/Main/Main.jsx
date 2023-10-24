@@ -167,7 +167,7 @@ const Main = (props) => {
                     <Route path="/forsellers" element={<Forsellers />} />
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
-                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} />} />
+                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} addMessage={props.addMessage} onMessageChange={props.onMessageChange} />} />
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                 </Routes>
             </section>
