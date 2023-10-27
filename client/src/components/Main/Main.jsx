@@ -21,6 +21,7 @@ import Sales from "../Sales/Sales";
 import { HomeOutlined, PieChartOutlined, LineChartOutlined, BookOutlined, EnvironmentOutlined, ExpandOutlined, SoundOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import MediaQuery from 'react-responsive';
+import Blog3 from "../Blog/Blog3";
 
 const Main = (props) => {
     return (
@@ -160,6 +161,7 @@ const Main = (props) => {
                     <Route path="/blog" element={<BlogList />} />
                     <Route path="/blog/2" element={<Blog2 />} />
                     <Route path="/blog/1" element={<Blog1 />} />
+                    <Route path="/blog/3" element={<Blog3 />} />
                     <Route path="/partner" element={<Partner />} />
                     <Route path="/study" element={<Study />} />
                     <Route path="/onlineschools" element={<OnlineSchools />} />
@@ -167,7 +169,7 @@ const Main = (props) => {
                     <Route path="/forsellers" element={<Forsellers />} />
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
-                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} addMessage={props.addMessage} onMessageChange={props.onMessageChange} />} />
+                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} dispatch={props.dispatch} />} />
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                 </Routes>
             </section>

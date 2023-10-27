@@ -4,6 +4,7 @@ import Message from "./Message";
 import classes from "../../css/Dialogs.module.css";
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { MDBInput } from 'mdb-react-ui-kit';
+import { onMessageChangeActionCreator, addMessageActionCreator } from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
@@ -20,16 +21,13 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let onMessageChange = () => {
-        debugger
         let text = newMessageElement.current.value;
-        props.onMessageChange(text);
+        props.dispatch(onMessageChangeActionCreator(text))
     }
 
 
     let addMessage = () => {
-        let text = newMessageElement.current.value;
-        props.addMessage(text)
-        props.onMessageChange('');
+        props.dispatch(addMessageActionCreator())
     }
 
     return (

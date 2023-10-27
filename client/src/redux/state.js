@@ -1,3 +1,5 @@
+import dialogsReducer from "./dialogs-reducer";
+
 let store = {
     _state : {
         homePage: {
@@ -38,20 +40,8 @@ let store = {
         return this._state;
     },
 
-    onMessageChange (newMessageText) {
-        debugger
-        //console.log(newPostTex);
-        this._state.dialogsPage.newMessageText = newMessageText;
-        this._callSubscriber(this._state);
-    },
-    
-    addMessage () {
-        let newPost = {
-            id: 6,
-            name: 'Niko',
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messagesData.push(newPost)
+    dispatch (action) {
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._callSubscriber(this._state)
     },
     
@@ -60,5 +50,5 @@ let store = {
     }
 }
 
-export default store;
 window.store=store;
+export default store;

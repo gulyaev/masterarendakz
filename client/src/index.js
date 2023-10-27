@@ -11,7 +11,7 @@ import store from './redux/state'
 let rerenderEntireTree = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
-        <App appState={state} addMessage={store.addMessage.bind(store)} onMessageChange={store.onMessageChange.bind(store)}/>
+        <App appState={state} dispatch={store.dispatch.bind(store)} />
     );
 }
 
