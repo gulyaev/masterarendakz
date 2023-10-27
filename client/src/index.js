@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "antd/dist/reset.css";
 import App from './App';
-import store from './redux/state'
+import store from './redux/redux-store';
 
 let rerenderEntireTree = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,4 +17,9 @@ let rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState())
   
-store.subscribe(rerenderEntireTree)
+//store.subscribe(rerenderEntireTree)
+
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntireTree(state);  
+})

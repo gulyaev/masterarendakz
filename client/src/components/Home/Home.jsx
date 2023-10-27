@@ -2,7 +2,8 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import HomeInfo from "./HomeInfo/HomeInfo";
 
-const Profile = (props) => {
+const Home = (props) => {
+    debugger
     return (
         <div>
             <HomeInfo />
@@ -10,4 +11,4 @@ const Profile = (props) => {
     )
 }
 
-export default Profile;
+export default Home;
