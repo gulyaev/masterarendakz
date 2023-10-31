@@ -4,6 +4,7 @@ import Gallery from "../Gallery/Gallery";
 import Services from "../Services/Services";
 import Statistics from "../Statistics/Statistics";
 import Dialogs from "../Dialogs/Dialogs";
+import DialogsContainer from "../Dialogs/DialogsContainer";
 import classes from "../../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -169,7 +170,7 @@ const Main = (props) => {
                     <Route path="/forsellers" element={<Forsellers />} />
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
-                    <Route path="/dialogs" element={<Dialogs state={props.appState.dialogsPage} dispatch={props.dispatch} />} />
+                    <Route path="/dialogs" element={<DialogsContainer state={props.appState.dialogsPage} dispatch={props.dispatch} />} />
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                 </Routes>
             </section>

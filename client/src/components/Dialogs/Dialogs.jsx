@@ -4,15 +4,12 @@ import Message from "./Message";
 import classes from "../../css/Dialogs.module.css";
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { MDBInput } from 'mdb-react-ui-kit';
-import { onMessageChangeActionCreator, addMessageActionCreator } from "../../redux/dialogs-reducer";
-
 
 const Dialogs = (props) => {
     useEffect(() => {
         let myInput = document.getElementById('form1');
         myInput.focus()
     })
-
 
     let dialogsElements = props.state.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
     let messagesElements = props.state.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
@@ -22,14 +19,14 @@ const Dialogs = (props) => {
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        props.dispatch(onMessageChangeActionCreator(text))
+        props.onMessageChange(text)
     }
-
 
     let addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.addMessage()
     }
 
+    debugger
     return (
         <>
             <div className={classes.dialogs}>

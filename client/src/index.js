@@ -7,11 +7,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "antd/dist/reset.css";
 import App from './App';
 import store from './redux/redux-store';
+import StoreContext from './StoreContext';
 
 let rerenderEntireTree = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
+    debugger
     root.render(
-        <App appState={state} dispatch={store.dispatch.bind(store)} />
+        <StoreContext.Provider value={store}>
+            <App appState={state} dispatch={store.dispatch.bind(store)} />
+        </StoreContext.Provider>
     );
 }
 
