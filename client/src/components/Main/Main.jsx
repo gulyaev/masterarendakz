@@ -153,8 +153,12 @@ const Main = (props) => {
             </aside>
             <section className={classes.content}>
                 <Routes>
-                    <Route path="/home" element={<Home state={props.appState.homePage} />} />
-                    <Route exact path="/" element={<Home state={props.appState.homePage} />} />
+                    {/*
+                        <Route path="/home" element={<Home state={props.appState.homePage} />} />
+                        <Route exact path="/" element={<Home state={props.appState.homePage} />} />
+                    */}
+                    <Route path="/home" element={<Home />} />
+                    <Route exact path="/" element={<Home />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/statistics" element={<Statistics />} />
@@ -170,8 +174,10 @@ const Main = (props) => {
                     <Route path="/forsellers" element={<Forsellers />} />
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
-                    <Route path="/dialogs" element={<DialogsContainer state={props.appState.dialogsPage} dispatch={props.dispatch} />} />
+                    <Route path="/dialogs" element={<DialogsContainer />} />
+                    {/*
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
+                    */}
                 </Routes>
             </section>
         </div>
