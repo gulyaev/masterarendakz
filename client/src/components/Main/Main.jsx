@@ -23,6 +23,7 @@ import { HomeOutlined, PieChartOutlined, LineChartOutlined, BookOutlined, Enviro
 import { Menu } from 'antd';
 import MediaQuery from 'react-responsive';
 import Blog3 from "../Blog/Blog3";
+import UsersContainer from "../Users/UsersContainer";
 
 const Main = (props) => {
     return (
@@ -75,6 +76,20 @@ const Main = (props) => {
                                 <SoundOutlined style={{ fontSize: '18px' }} />
                                 <span><NavLink to="/sales">
                                     Акции
+                                </NavLink></span>
+                            </Menu.Item>
+
+                            <Menu.Item key="7">
+                                <BookOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/dialogs">
+                                    Диалоги
+                                </NavLink></span>
+                            </Menu.Item>
+
+                            <Menu.Item key="8">
+                                <BookOutlined style={{ fontSize: '18px' }} />
+                                <span><NavLink to="/users">
+                                    Пользователи
                                 </NavLink></span>
                             </Menu.Item>
 
@@ -175,6 +190,7 @@ const Main = (props) => {
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
                     <Route path="/dialogs" element={<DialogsContainer />} />
+                    <Route path="/users" element={<UsersContainer />} />
                     {/*
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                     */}
