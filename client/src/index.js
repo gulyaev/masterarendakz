@@ -9,21 +9,9 @@ import App from './App';
 import store from './redux/redux-store';
 import {Provider} from 'react-redux';
 
-let rerenderEntireTree = (state) => {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    debugger
-    root.render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
-}
-
-rerenderEntireTree(store.getState())
-  
-//store.subscribe(rerenderEntireTree)
-
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);  
-})
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+);

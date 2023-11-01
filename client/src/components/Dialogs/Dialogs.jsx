@@ -11,8 +11,8 @@ const Dialogs = (props) => {
         myInput.focus()
     })
 
-    let dialogsElements = props.state.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
-    let messagesElements = props.state.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
+    let dialogsElements = props.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
+    let messagesElements = props.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
 
 
     let newMessageElement = React.createRef();
@@ -26,7 +26,6 @@ const Dialogs = (props) => {
         props.addMessage()
     }
 
-    debugger
     return (
         <>
             <div className={classes.dialogs}>
@@ -38,7 +37,7 @@ const Dialogs = (props) => {
                         {messagesElements}
                     </div>
                     <div>
-                        <MDBInput ref={newMessageElement} onChange={onMessageChange} label='Введите текст' id='form1' type='text' value={props.state.newMessageText} />
+                        <MDBInput ref={newMessageElement} onChange={onMessageChange} label='Введите текст' id='form1' type='text' value={props.newMessageText} />
                         <MDBBtn onClick={addMessage}>Добавить пост</MDBBtn>
                     </div>
                 </div>
