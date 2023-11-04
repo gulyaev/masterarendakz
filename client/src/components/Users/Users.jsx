@@ -1,23 +1,25 @@
 import React from "react";
 import User from "./User";
 import axios from 'axios';
+import { MDBBtn } from 'mdb-react-ui-kit';
 
-const Users = (props) => {
-    if (props.usersData.length === 0) {
+class Users extends React.Component {
+
+    componentDidMount() {
         axios.get("http://localhost:5000/api/user").then(response => {
-            props.setUsers(
-                [
-                    response.data
-                ]
-            )
+            this.props.setUsers(response.data)
         })
     }
 
-    let usersElements = props.usersData.map(usersItem => <User name={usersItem.name} prof={usersItem.prof} id={usersItem.id} />)
+    render() {
+        let usersElements = this.props.usersData.map(usersItem => <User name={usersItem.name} prof={usersItem.prof} id={usersItem.id} />)
 
-    return (
-        <div>{usersElements}</div>
-    )
+        return (
+            <>
+                <div>{usersElements}</div>
+            </>
+        )
+    }
 }
 
 export default Users;
