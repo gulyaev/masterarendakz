@@ -3,7 +3,7 @@ const userRouter = require('./routes/user.routes')
 const postRouter = require('./routes/post.routes')
 const authRouter = require("./routes/auth.routes");
 const config = require("config");
-const pool = require("./db")
+const pool = require("./db");
 
 const app = express();
 app.get('/', async (req, res) => {
@@ -41,12 +41,14 @@ app.get('/create', async (req, res) => {
     }
 })
 
+const PORT = config.get('serverPort');
+const corsMiddleware = require ('./middleware/cors.middleware');
+
 app.use(express.json());
+app.use(corsMiddleware);
 app.use('/api', userRouter)
 app.use('/api', postRouter)
 app.use("/api/auth", authRouter);
-
-const PORT = config.get('serverPort');
 
 const start = () => {
     try {

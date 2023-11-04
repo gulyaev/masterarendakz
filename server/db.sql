@@ -11,3 +11,9 @@ create TABLE post (
     user_id INTEGER,
     FOREIGN KEY(user_id) REFERENCES person(id)
 );
+
+ALTER TABLE person add column "followed" BOOLEAN DEFAULT FALSE;
+ALTER TABLE person add column prof VARCHAR(255);
+
+INSERT INTO person (name, prof) VALUES ('name5', 'Стоматолог');
+
