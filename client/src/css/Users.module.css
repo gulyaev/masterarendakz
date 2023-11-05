@@ -1,0 +1,28 @@
+.pages {
+  margin-top: 50px;
+}
+
+.pagination .page-item.active .page-link.paginationLinkStyle {
+  background-color: #fff !important;
+}
+
+.paginationItemStyle {
+  margin-left: 5px;
+}
+.paginationItemStyle .page-link {
+  color: #fff;
+}
+.paginationItemStyle.page-item.active button {
+  background-color: green;
+  border-color: green;
+}
+
+.paginationLinkStyle {
+  border-radius: 5px;
+}
+.paginationLinkStyle:hover {
+  background-color: #772e2e;
+}
+.paginationLinkStyle:active {
+  background-color: #772e2e;
+}
