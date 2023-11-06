@@ -1,13 +1,15 @@
 const SET_USERS = "SET-USERS";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
+const SET_IS_FETCHING = "SET-IS-FETCHING";
 
 let initialState = {
     usersData: [],
     totalUsersCount: 8,
     perPage: 2,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 };
 
 
@@ -44,6 +46,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.payload
             }
+        case SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.payload
+            }
         default: 
             return state;
     }    
@@ -53,5 +60,6 @@ export const followActionCreator = (userId) => ({type: FOLLOW, userId: userId});
 export const unfollowActionCreator = (userId) => ({type: UNFOLLOW, userId: userId});
 export const setUsersActionCreator = (users) => ({type: SET_USERS, users});
 export const setCurrentPageActionCreator = (page) => ({ type: SET_CURRENT_PAGE, payload: page });
+export const setIsFetchingActionCreator = (value) => ({ type: SET_IS_FETCHING, payload: value });
 
 export default usersReducer;

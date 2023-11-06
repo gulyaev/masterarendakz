@@ -3,18 +3,23 @@ import Users from "./Users";
 import User from "./User";
 import axios from 'axios';
 import { connect } from "react-redux";
-import { setUsersActionCreator, followActionCreator, unfollowActionCreator, setCurrentPageActionCreator } from "../../redux/users-reducer";
+import { setUsersActionCreator, followActionCreator, unfollowActionCreator, setCurrentPageActionCreator, setIsFetchingActionCreator } from "../../redux/users-reducer";
+import Preloader from "../common/Preloader";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
+        this.props.setIsFetching(true)
         axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
+            this.props.setIsFetching(false)
             this.props.setUsers(response.data)
         })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.currentPage !== this.props.currentPage) {
+            this.props.setIsFetching(true)
             axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
+                this.props.setIsFetching(false)
                 this.props.setUsers(response.data)
             })
         }
@@ -28,7 +33,18 @@ class UsersContainer extends React.Component {
         let setCurrentPage = this.props.setCurrentPage;
         let currentPage = this.props.currentPage;
         return (
-            <Users usersElements={usersElements} pagesCount={pagesCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <>
+                {this.props.isFetching
+                    ?
+                    <Preloader />
+                    :
+                    <Users usersElements={usersElements}
+                        pagesCount={pagesCount}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />
+                }
+            </>
         )
     }
 }
@@ -38,7 +54,8 @@ let mapStateToProps = (state) => {
         usersData: state.usersPage.usersData,
         totalUsersCount: state.usersPage.totalUsersCount,
         perPage: state.usersPage.perPage,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 
@@ -47,7 +64,8 @@ let mapDispatchToProps = (dispatch) => {
         setUsers: (users) => { dispatch(setUsersActionCreator(users)) },
         follow: (userId) => { dispatch(followActionCreator(userId)) },
         unfollow: (userId) => { dispatch(unfollowActionCreator(userId)) },
-        setCurrentPage: (page) => { dispatch(setCurrentPageActionCreator(page)) }
+        setCurrentPage: (page) => { dispatch(setCurrentPageActionCreator(page)) },
+        setIsFetching: (value) => { dispatch(setIsFetchingActionCreator(value)) },
     }
 }
 
