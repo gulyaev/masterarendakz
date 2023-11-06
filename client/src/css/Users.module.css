@@ -2,10 +2,6 @@
   margin-top: 50px;
 }
 
-.pagination .page-item.active .page-link.paginationLinkStyle {
-  background-color: #fff !important;
-}
-
 .paginationItemStyle {
   margin-left: 5px;
 }
@@ -13,16 +9,27 @@
   color: #fff;
 }
 .paginationItemStyle.page-item.active button {
-  background-color: green;
-  border-color: green;
+  background-color: #772e2e !important;
+  border-color: #772e2e !important;
 }
 
 .paginationLinkStyle {
+  background-color: green !important;
   border-radius: 5px;
 }
-.paginationLinkStyle:hover {
-  background-color: #772e2e;
-}
 .paginationLinkStyle:active {
-  background-color: #772e2e;
+  color: #772e2e !important;
+}
+.paginationLinkStyle:hover {
+  background-color: #772e2e !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+  font-weight: bold !important;
+}
+
+.actived {
+  background-color: #772e2e !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+  font-weight: bold !important;
 }

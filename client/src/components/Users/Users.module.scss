@@ -2,32 +2,44 @@
     margin-top: 50px;
 }
 
-.pagination .page-item.active .page-link.paginationLinkStyle {
-    background-color: #fff !important;
-}
-
 .paginationItemStyle {
 	margin-left: 5px;
-	.page-link {
-		color: #fff
+   .page-link {
+	   color: #fff
+   }
+   &.page-item {
+	   &.active {
+		   button {
+			   background-color: #772e2e !important;
+			   border-color: #772e2e !important;
+		   }
+	   }
+   }
+}
+
+
+.paginationLinkStyle {
+	background-color: green !important;
+	border-radius: 5px;
+
+	&:active {
+		color: #772e2e !important;
 	}
-	&.page-item {
-		&.active {
-			button {
-				background-color: green;
-				border-color: green;
-			}
-		}
+
+	&:hover {
+		background-color: #772e2e !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		font-weight: bold !important;
 	}
 }
 
-.paginationLinkStyle {
-	//background-color: #b90000 !important;
-	border-radius: 5px;
-	&:hover {
-		background-color: #772e2e;
-	}
-	&:active {
-		background-color: #772e2e;
-	}
+.actived{
+	background-color: #772e2e !important;
+	color: #fff !important;
+	border-radius: 5px !important;
+	font-weight: bold !important;
 }
+
+
+
