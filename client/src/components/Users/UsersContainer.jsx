@@ -3,7 +3,7 @@ import Users from "./Users";
 import User from "./User";
 import axios from 'axios';
 import { connect } from "react-redux";
-import { setUsersActionCreator, followActionCreator, unfollowActionCreator, setCurrentPageActionCreator, setIsFetchingActionCreator } from "../../redux/users-reducer";
+import { setUsers, follow, unfollow, setCurrentPage, setIsFetching } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader";
 
 class UsersContainer extends React.Component {
@@ -59,14 +59,21 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setUsers: (users) => { dispatch(setUsersActionCreator(users)) },
-        follow: (userId) => { dispatch(followActionCreator(userId)) },
-        unfollow: (userId) => { dispatch(unfollowActionCreator(userId)) },
-        setCurrentPage: (page) => { dispatch(setCurrentPageActionCreator(page)) },
-        setIsFetching: (value) => { dispatch(setIsFetchingActionCreator(value)) },
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         setUsers: (users) => { dispatch(setUsersActionCreator(users)) },
+//         follow: (userId) => { dispatch(followActionCreator(userId)) },
+//         unfollow: (userId) => { dispatch(unfollowActionCreator(userId)) },
+//         setCurrentPage: (page) => { dispatch(setCurrentPageActionCreator(page)) },
+//         setIsFetching: (value) => { dispatch(setIsFetchingActionCreator(value)) }
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+//export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, {
+    setUsers,
+    follow,
+    unfollow,
+    setCurrentPage,
+    setIsFetching
+})(UsersContainer)
