@@ -194,8 +194,7 @@ const Main = (props) => {
                     <Route path="/sales" element={<Sales />} />
                     <Route path="/dialogs" element={<DialogsContainer />} />
                     <Route path="/users" element={<UsersContainer />} />
-                    <Route path="/profile" element={<ProfileContainer />} />
-                    <Route path="/profile/:id" element={<ProfileContainer />} />
+                    <Route path="/profile/:id?" element={<ProfileContainer />} />
                     {/*
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                     */}
