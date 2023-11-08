@@ -26,7 +26,7 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        let usersElements = this.props.usersData.map(usersItem => <User name={usersItem.name} prof={usersItem.prof} id={usersItem.id} />)
+        let usersElements = this.props.usersData.map((usersItem, index) => <User key={index} name={usersItem.name} prof={usersItem.prof} id={usersItem.id} />)
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.perPage);
 
@@ -59,17 +59,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         setUsers: (users) => { dispatch(setUsersActionCreator(users)) },
-//         follow: (userId) => { dispatch(followActionCreator(userId)) },
-//         unfollow: (userId) => { dispatch(unfollowActionCreator(userId)) },
-//         setCurrentPage: (page) => { dispatch(setCurrentPageActionCreator(page)) },
-//         setIsFetching: (value) => { dispatch(setIsFetchingActionCreator(value)) }
-//     }
-// }
-
-//export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
 export default connect(mapStateToProps, {
     setUsers,
     follow,

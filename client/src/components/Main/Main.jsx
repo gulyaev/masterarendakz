@@ -24,6 +24,7 @@ import { Menu } from 'antd';
 import MediaQuery from 'react-responsive';
 import Blog3 from "../Blog/Blog3";
 import UsersContainer from "../Users/UsersContainer";
+import ProfileContainer from "../Profile/ProfileContainer";
 
 const Main = (props) => {
     return (
@@ -39,9 +40,11 @@ const Main = (props) => {
                         }}>
                             <Menu.Item key="1">
                                 <HomeOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/home">
-                                    Главная
-                                </NavLink></span>
+                                <span>
+                                    <NavLink to="/home">
+                                        Главная
+                                    </NavLink>
+                                </span>
                             </Menu.Item>
                             <Menu.Item key="2">
                                 <PieChartOutlined style={{ fontSize: '18px' }} />
@@ -191,6 +194,8 @@ const Main = (props) => {
                     <Route path="/sales" element={<Sales />} />
                     <Route path="/dialogs" element={<DialogsContainer />} />
                     <Route path="/users" element={<UsersContainer />} />
+                    <Route path="/profile" element={<ProfileContainer />} />
+                    <Route path="/profile/:id" element={<ProfileContainer />} />
                     {/*
                     <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
                     */}

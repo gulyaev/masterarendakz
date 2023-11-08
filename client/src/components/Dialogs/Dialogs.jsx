@@ -11,8 +11,8 @@ const Dialogs = (props) => {
     //myInput.focus()
     //})
 
-    let dialogsElements = props.dialogsData.map(dialogItem => <DialogItem name={dialogItem.name} id={dialogItem.id} />)
-    let messagesElements = props.messagesData.map(messagesItem => <Message name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
+    let dialogsElements = props.dialogsData.map((dialogItem, index) => <DialogItem key={index} name={dialogItem.name} id={dialogItem.id} />)
+    let messagesElements = props.messagesData.map((messagesItem, index) => <Message key={index} name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
 
 
     let newMessageElement = React.createRef();
