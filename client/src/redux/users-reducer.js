@@ -6,8 +6,8 @@ const SET_IS_FETCHING = "SET-IS-FETCHING";
 
 let initialState = {
     usersData: [],
-    totalUsersCount: 8,
-    perPage: 2,
+    totalUsersCount: 30,
+    perPage: 7,
     currentPage: 1,
     isFetching: false
 };

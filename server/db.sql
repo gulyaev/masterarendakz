@@ -17,3 +17,6 @@ ALTER TABLE person add column prof VARCHAR(255);
 
 INSERT INTO person (name, prof) VALUES ('name5', 'Стоматолог');
 
+DELETE FROM person
+WHERE id BETWEEN value 1 AND value 33;
+

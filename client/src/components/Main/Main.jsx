@@ -3,11 +3,9 @@ import Home from "../Home/Home";
 import Gallery from "../Gallery/Gallery";
 import Services from "../Services/Services";
 import Statistics from "../Statistics/Statistics";
-import Dialogs from "../Dialogs/Dialogs";
 import DialogsContainer from "../Dialogs/DialogsContainer";
 import classes from "../../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import About from "../About";
 import BlogList from "../Blog/BlogList";
 import Blog1 from "../Blog/Blog1";
@@ -19,162 +17,24 @@ import Vacancies from "../Vacancies/Vacancies";
 import Forsellers from "../Forsellers/Forsellers";
 import Forclients from "../Forclients/Forclients";
 import Sales from "../Sales/Sales";
-import { HomeOutlined, PieChartOutlined, LineChartOutlined, BookOutlined, EnvironmentOutlined, ExpandOutlined, SoundOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
-import MediaQuery from 'react-responsive';
 import Blog3 from "../Blog/Blog3";
 import UsersContainer from "../Users/UsersContainer";
 import ProfileContainer from "../Profile/ProfileContainer";
+import RegistrationsContainer from "../Auth/Registration/RegistrationsContainer";
+import LoginsContainer from "../Auth/Login/LoginsContainer";
+import { useSelector } from "react-redux";
+import SidebarMenu from "../SidebarMenu/SidebarMenu";
 
 const Main = (props) => {
+    const isAuth = useSelector(state => state.auth.isAuth);
+
     return (
         <div className={classes.main}>
             <aside className={classes.sidebar}>
-                <nav className={classes.sidebar__menu}>
-                    <MediaQuery minWidth={568}>
-                        <Menu mode="vertical" defaultSelectedKeys={['1']} style={{
-                            width: 200,
-                            color: "green",
-                            size: "100px",
-                            fontSize: "16px"
-                        }}>
-                            <Menu.Item key="1">
-                                <HomeOutlined style={{ fontSize: '18px' }} />
-                                <span>
-                                    <NavLink to="/home">
-                                        Главная
-                                    </NavLink>
-                                </span>
-                            </Menu.Item>
-                            <Menu.Item key="2">
-                                <PieChartOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/gallery">
-                                    Сдам в аренду
-                                </NavLink></span>
-                            </Menu.Item>
-                            {/*
-                                <Menu.Item key="3">
-                                <LineChartOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/statistics">
-                                    Статистика
-                                </NavLink></span>
-                            </Menu.Item>
-                    */}
-                            <Menu.Item key="4">
-                                <EnvironmentOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/forsellers">
-                                    Арендодателям
-                                </NavLink></span>
-                            </Menu.Item>
-                            {/*
-                            <Menu.Item key="5">
-                                <ExpandOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/forclients">
-                                    Арендаторам
-                                </NavLink></span>
-                            </Menu.Item>
-                            */}
-
-                            <Menu.Item key="6">
-                                <SoundOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/sales">
-                                    Акции
-                                </NavLink></span>
-                            </Menu.Item>
-
-                            <Menu.Item key="7">
-                                <BookOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/dialogs">
-                                    Диалоги
-                                </NavLink></span>
-                            </Menu.Item>
-
-                            <Menu.Item key="8">
-                                <BookOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/users">
-                                    Пользователи
-                                </NavLink></span>
-                            </Menu.Item>
-
-                            {/*
-                                <Menu.Item key="7">
-                                <BookOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/dialogs">
-                                    Диалоги
-                                </NavLink></span>
-                            </Menu.Item>
-                            */}
-
-                        </Menu>
-                    </MediaQuery>
-
-                    <MediaQuery maxWidth={568}>
-                        <Menu mode="vertical" defaultSelectedKeys={['1']} style={{
-                            color: "green",
-                            size: "100px",
-                            fontSize: "16px"
-                        }}>
-                            <Menu.Item key="1">
-                                <HomeOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/home">
-                                    Главная
-                                </NavLink></span>
-                            </Menu.Item>
-                            <Menu.Item key="2">
-                                <PieChartOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/gallery">
-                                    Сдам в аренду
-                                </NavLink></span>
-                            </Menu.Item>
-                            {/*
-                                <Menu.Item key="3">
-                                <LineChartOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/statistics">
-                                    Статистика
-                                </NavLink></span>
-                            </Menu.Item>
-                    */}
-                            <Menu.Item key="4">
-                                <EnvironmentOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/forsellers">
-                                    Арендодателям
-                                </NavLink></span>
-                            </Menu.Item>
-                            {/*
-                            <Menu.Item key="5">
-                                <ExpandOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/forclients">
-                                    Арендаторам
-                                </NavLink></span>
-                            </Menu.Item>
-                            */}
-
-                            <Menu.Item key="6">
-                                <SoundOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/sales">
-                                    Акции
-                                </NavLink></span>
-                            </Menu.Item>
-
-                            {/*
-                            <Menu.Item key="7">
-                                <BookOutlined style={{ fontSize: '18px' }} />
-                                <span><NavLink to="/dialogs">
-                                    Диалоги
-                                </NavLink></span>
-                            </Menu.Item>
-                            */}
-
-                        </Menu>
-                    </MediaQuery>
-                </nav>
+                <SidebarMenu dispatch={props.dispatch} />
             </aside>
             <section className={classes.content}>
                 <Routes>
-                    {/*
-                        <Route path="/home" element={<Home state={props.appState.homePage} />} />
-                        <Route exact path="/" element={<Home state={props.appState.homePage} />} />
-                    */}
                     <Route path="/home" element={<Home />} />
                     <Route exact path="/" element={<Home />} />
                     <Route path="/services" element={<Services />} />
@@ -195,9 +55,12 @@ const Main = (props) => {
                     <Route path="/dialogs" element={<DialogsContainer />} />
                     <Route path="/users" element={<UsersContainer />} />
                     <Route path="/profile/:id?" element={<ProfileContainer />} />
-                    {/*
-                    <Route path="/dialogs/:id" element={<Dialogs state={props.appState.dialogsPage} />} />
-                    */}
+                    {!isAuth &&
+                        <>
+                            <Route path="/registration" element={<RegistrationsContainer />} />
+                            <Route path="/login" element={<LoginsContainer />} />
+                        </>
+                    }
                 </Routes>
             </section>
         </div>

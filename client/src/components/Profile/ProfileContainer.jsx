@@ -15,9 +15,9 @@ class ProfileContainer extends React.Component {
 
         this.props.setIsFetching(true)
         axios.get(`http://localhost:5000/api/user/${userId}`)
-            .then(responce => {
+            .then(response => {
                 this.props.setIsFetching(false)
-                this.props.setUserProfile(responce.data);
+                this.props.setUserProfile(response.data);
             });
     }
 
