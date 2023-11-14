@@ -1,10 +1,10 @@
 import React from "react";
 import Users from "./Users";
-import User from "./User";
 import axios from 'axios';
 import { connect } from "react-redux";
-import { setUsers, follow, unfollow, setCurrentPage, setIsFetching } from "../../redux/users-reducer";
+import { setUsers, follow, unfollow, setCurrentPage, setIsFetching, initialUsers } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader";
+import UserContainer from "./UserContainer";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -12,6 +12,7 @@ class UsersContainer extends React.Component {
         axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
             this.props.setIsFetching(false)
             this.props.setUsers(response.data)
+            this.props.initialUsers(this.props.myId)
         })
     }
 
@@ -21,12 +22,20 @@ class UsersContainer extends React.Component {
             axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data)
+                this.props.initialUsers(this.props.myId)
             })
         }
     }
 
     render() {
-        let usersElements = this.props.usersData.map((usersItem, index) => <User key={index} name={usersItem.name} prof={usersItem.prof} id={usersItem.id} />)
+        let usersElements = this.props.usersData.map((usersItem, index) =>
+            <UserContainer
+                key={index}
+                name={usersItem.name}
+                prof={usersItem.prof}
+                id={usersItem.id}
+                followings={usersItem.followings}
+                followed={usersItem.followed} />)
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.perPage);
 
@@ -55,7 +64,8 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         perPage: state.usersPage.perPage,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        myId: state.auth.userData.id
     }
 }
 
@@ -64,5 +74,6 @@ export default connect(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
-    setIsFetching
+    setIsFetching,
+    initialUsers
 })(UsersContainer)

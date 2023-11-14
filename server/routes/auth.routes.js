@@ -18,13 +18,13 @@ router.post('/register',
             if (!errors.isEmpty()) {
                 res.status(400).json({ message: "Некорректный email или пароль", errors })
             } else {
-                const { name, email, password } = req.body
+                const { name, email, password, prof } = req.body
                 const candidate = await db.query(`select * from person where email=$1`, [email])
                 if (candidate.rows.length !== 0) {
                     res.json({ message: "Пользователь с таким email уже существует" })
                 } else {
                     const hashedpassword = await bcrypt.hash(password, 15)
-                    const newUser = await db.query(`insert into person (name, email, password) values ($1, $2, $3) RETURNING *`, [name, email, hashedpassword])
+                    const newUser = await db.query(`insert into person (name, email, password, prof) values ($1, $2, $3, $4) RETURNING *`, [name, email, hashedpassword, prof])
                     res.status(200).json({ message: "Пользователь создан" })
                 }
             }

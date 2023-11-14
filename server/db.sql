@@ -20,3 +20,6 @@ INSERT INTO person (name, prof) VALUES ('name5', 'Стоматолог');
 DELETE FROM person
 WHERE id BETWEEN value 1 AND value 33;
 
+update person set followings = '{}' where id = 37;
+update person set followers = '{}' where id = 37;
+

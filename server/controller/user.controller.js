@@ -41,7 +41,6 @@ class UserController {
 
             //вывод пользователей в пределах заданного размера порции:
             results.results = users.rows.slice(startIndex, endIndex);
-
             if (!users) throw Error('No items');
 
             res.status(200).json(results);
@@ -67,6 +66,46 @@ class UserController {
         const user = await db.query(`DELETE FROM person where id=$1`, [id])
         res.json(user.rows[0])
     }
-}
+
+    followUser(req, res) {
+        const { id } = req.body; // following to
+        const userId = req.user.id; //loggedin
+    
+        const p = new Promise((resolve, reject) => {
+          const user = db.query(
+            `update person set followings = array_append(followings, $1) where id=$2 RETURNING *`,
+            [id, userId]
+          );
+          resolve(user);
+        });
+        p.then((data) => {
+          db.query(
+            `update person set followers = array_append(followers, $2) where id=$1 RETURNING *`,
+            [id, userId]
+          );
+          res.status(200).json(data.rows[0]);
+        });
+      }
+    
+    unfollowUser(req, res) {
+        const { id } = req.body; // following to
+        const userId = req.user.id; //loggedin
+    
+        const p = new Promise((resolve, reject) => {
+          const user = db.query(
+            `update person set followings = array_remove(followings, $1) where id=$2 RETURNING *`,
+            [id, userId]
+          );
+          resolve(user);
+        });
+        p.then((data) => {
+          db.query(
+            `update person set followers = array_remove(followers, $2) where id=$1 RETURNING *`,
+            [id, userId]
+          );
+          res.status(200).json(data.rows[0]);
+        });
+      }
+    }
 
 module.exports = new UserController()

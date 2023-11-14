@@ -27,6 +27,7 @@ const Registration = ({ registration }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [prof, setProf] = useState("");
 
     return (
         <>
@@ -80,6 +81,7 @@ const Registration = ({ registration }) => {
                 </Form.Item>
 
                 <Form.Item
+                    style={{ marginBottom: "70px" }}
                     name="confirm"
                     label="Подтвердите пароль"
                     dependencies={['password']}
@@ -103,12 +105,25 @@ const Registration = ({ registration }) => {
                 </Form.Item>
 
                 <Form.Item
+                    name="prof"
+                    label="Специализация"
+                    rules={[
+                        {
+                            required: false,
+                            message: 'На чем вы специализируетесь?',
+                        },
+                    ]}
+                >
+                    <Input value={prof} onChange={(e) => setProf(e.target.value)} />
+                </Form.Item>
+
+                <Form.Item
                     wrapperCol={{
                         ...layout.wrapperCol,
                         offset: 8,
                     }}
                 >
-                    <Button type="primary" onClick={() => registration(name, email, password)}>
+                    <Button type="primary" onClick={() => registration(name, email, password, prof)}>
                         Зарегистрироваться
                     </Button>
                 </Form.Item>

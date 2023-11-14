@@ -22,13 +22,14 @@ const RegistrationsContainer = (props) => {
         });
     };
 
-    const registration = async (name, email, password) => {
+    const registration = async (name, email, password, prof) => {
         try {
             props.setIsFetching(true);
             const response = await axios.post('http://localhost:5000/api/auth/register', {
                 name,
                 email,
-                password
+                password,
+                prof
             });
             props.setIsFetching(false);
             props.setAlertMessage(response.data.message);
