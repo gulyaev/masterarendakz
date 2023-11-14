@@ -1,28 +1,26 @@
 import React from "react";
 import Users from "./Users";
-import axios from 'axios';
 import { connect } from "react-redux";
 import { setUsers, follow, unfollow, setCurrentPage, setIsFetching, initialUsers } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader";
 import UserContainer from "./UserContainer";
+import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
+        usersAPI.getUsers(this.props.perPage, this.props.currentPage).then(data => {
             this.props.setIsFetching(false)
-            this.props.setUsers(response.data)
-            this.props.initialUsers(this.props.myId)
+            this.props.setUsers(data)
         })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.currentPage !== this.props.currentPage) {
             this.props.setIsFetching(true)
-            axios.get(`http://localhost:5000/api/user?per_page=${this.props.perPage}&page=${this.props.currentPage}`).then(response => {
+            usersAPI.getUsers(this.props.perPage, this.props.currentPage).then(data => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data)
-                this.props.initialUsers(this.props.myId)
+                this.props.setUsers(data)
             })
         }
     }
@@ -65,7 +63,6 @@ let mapStateToProps = (state) => {
         perPage: state.usersPage.perPage,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        myId: state.auth.userData.id
     }
 }
 
