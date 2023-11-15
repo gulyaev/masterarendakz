@@ -1,27 +1,18 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import { setUsers, follow, unfollow, setCurrentPage, setIsFetching, initialUsers } from "../../redux/users-reducer";
+import { setCurrentPage, getUsersThunkCreator, initialUsers } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader";
 import UserContainer from "./UserContainer";
-import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.perPage, this.props.currentPage).then(data => {
-            this.props.setIsFetching(false)
-            this.props.setUsers(data)
-        })
+        this.props.getUsersThunkCreator(this.props.perPage, this.props.currentPage)
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.currentPage !== this.props.currentPage) {
-            this.props.setIsFetching(true)
-            usersAPI.getUsers(this.props.perPage, this.props.currentPage).then(data => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(data)
-            })
+            this.props.getUsersThunkCreator(this.props.perPage, this.props.currentPage)
         }
     }
 
@@ -57,7 +48,7 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    debugger
+
     return {
         usersData: state.usersPage.usersData,
         totalUsersCount: state.usersPage.totalUsersCount,
@@ -68,10 +59,7 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    setUsers,
-    follow,
-    unfollow,
     setCurrentPage,
-    setIsFetching,
+    getUsersThunkCreator,
     initialUsers
 })(UsersContainer)

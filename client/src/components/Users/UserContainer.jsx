@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import { follow, unfollow, setIsFollowing } from "../../redux/users-reducer";
+import { follow, unfollow, followUserThunkCreator, unfollowUserThunkCreator } from "../../redux/users-reducer";
 import User from "./User";
 import { connect } from "react-redux";
 
@@ -14,11 +13,7 @@ const UserContainer = (props) => {
         const config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         };
-        props.setIsFollowing(true, u_id);
-        axios.put(`http://localhost:5000/api/follow`, bodyParameters, config).then((res) => {
-            props.setIsFollowing(false, u_id);
-            console.log(res.data);
-        });
+        props.followUserThunkCreator(bodyParameters, config, u_id);
     };
 
     const unfollowFetch = (u_id) => {
@@ -28,11 +23,7 @@ const UserContainer = (props) => {
         const config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         };
-        props.setIsFollowing(true, u_id);
-        axios.put(`http://localhost:5000/api/unfollow`, bodyParameters, config).then((res) => {
-            props.setIsFollowing(false, u_id);
-            console.log(res.data);
-        });
+        props.unfollowUserThunkCreator(bodyParameters, config, u_id);
     };
 
     const followUnfollowHandler = () => {
@@ -67,4 +58,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setIsFollowing, follow, unfollow })(UserContainer);
+export default connect(mapStateToProps, { follow, unfollow, followUserThunkCreator, unfollowUserThunkCreator })(UserContainer);

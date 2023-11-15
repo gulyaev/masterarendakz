@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import Registration from "./Registration";
-import { setIsFetching, setAlertMessage, setErrorMessage } from "../../../redux/auth-reducer";
-import axios from 'axios';
+import { registrationThunkCreator } from "../../../redux/auth-reducer";
 import Preloader from "../../common/Preloader";
 import { message } from 'antd';
 
@@ -23,25 +22,12 @@ const RegistrationsContainer = (props) => {
     };
 
     const registration = async (name, email, password, prof) => {
-        try {
-            props.setIsFetching(true);
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
-                name,
-                email,
-                password,
-                prof
-            });
-            props.setIsFetching(false);
-            props.setAlertMessage(response.data.message);
-            if (props.alertMessage) {
-                formSuccess();
-            }
-        } catch (error) {
-            props.setErrorMessage(error.response.data.message);
-            if (props.errorMessage) {
-                formError();
-            }
-            props.setIsFetching(false);
+        props.registrationThunkCreator(name, email, password, prof);
+        if (props.alertMessage) {
+            formSuccess();
+        }
+        if (props.errorMessage) {
+            formError();
         }
     };
 
@@ -67,4 +53,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setIsFetching, setAlertMessage, setErrorMessage })(RegistrationsContainer);
+export default connect(mapStateToProps, { registrationThunkCreator })(RegistrationsContainer);

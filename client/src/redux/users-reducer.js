@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const SET_USERS = "SET-USERS";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -9,7 +11,7 @@ const SET_IS_FOLLOWING = 'SET-IS-FOLLOWING';
 let initialState = {
     usersData: [],
     totalUsersCount: 20,
-    perPage: 7,
+    perPage: 3,
     currentPage: 1,
     isFetching: false,
     isFollowing: []
@@ -77,9 +79,7 @@ const usersReducer = (state = initialState, action) => {
     }    
 }
 
-export const follow = (userId) => {
-    return {type: FOLLOW, userId: userId}
-};
+export const follow = (userId) => {return {type: FOLLOW, userId: userId}};
 export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page });
@@ -87,5 +87,34 @@ export const setIsFetching = (value) => ({ type: SET_IS_FETCHING, payload: value
 export const initialUsers = (me) => ({type: INITIAL_USERS, payload: me});
 export const setIsFollowing = (isFollowing, userId) => ({type: SET_IS_FOLLOWING, isFollowing: isFollowing, userId: userId});
 
+export const getUsersThunkCreator =(perPage, currentPage) => {
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
+            usersAPI.getUsers(perPage, currentPage).then(data => {
+                dispatch(setIsFetching(false));
+                dispatch(setUsers(data));
+            });
+        }
+}
+
+export const followUserThunkCreator =(bodyParameters, config, u_id) => {
+    return (dispatch) => {
+        dispatch(setIsFollowing(true, u_id));
+        usersAPI.followUser(bodyParameters, config).then(data => {
+            dispatch(setIsFollowing(false, u_id));
+            console.log(data);
+        });
+    }
+}
+
+export const unfollowUserThunkCreator =(bodyParameters, config, u_id) => {
+    return (dispatch) => {
+        dispatch(setIsFollowing(true, u_id));
+        usersAPI.unfollowUser(bodyParameters, config).then(data => {
+            dispatch(setIsFollowing(false, u_id));
+            console.log(data);
+        });
+    }
+}
 
 export default usersReducer;

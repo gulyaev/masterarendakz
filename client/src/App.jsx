@@ -3,26 +3,13 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import "./css/App.css";
-import { setUserData } from "./redux/auth-reducer";
-import axios from 'axios';
+import { authThunkCreator } from "./redux/auth-reducer";
+import { useDispatch } from "react-redux";
 
 const App = (props) => {
-
-  const auth = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/api/auth/me`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
-      )
-      props.dispatch(setUserData(response.data.user))
-      localStorage.setItem('token', response.data.token)
-    } catch (e) {
-      //alert(e.response.data.message + "123")
-      localStorage.removeItem('token')
-    }
-  }
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    auth()
+    dispatch(authThunkCreator())
   }, [])
 
   return (

@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 const SET_USER_DATA = "SET-USER-DATA";
 const SET_IS_FETCHING = "SET-IS-FETCHING";
 const SET_ALERT_MESSAGE = "SET-ALERT-MESSAGE";
@@ -53,5 +55,51 @@ export const setIsFetching = (value) => ({ type: SET_IS_FETCHING, payload: value
 export const setAlertMessage = (message) => ({ type: SET_ALERT_MESSAGE, payload: message });
 export const setErrorMessage = (message) => ({ type: SET_ERROR_MESSAGE, payload: message });
 export const logout = () => ({ type: LOGOUT });
+
+export const authThunkCreator = () => {
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
+        authAPI.makeAuth().then(data => {
+            dispatch(setUserData(data.user));
+            localStorage.setItem('token', data.token);
+          }).catch((error) => {
+            console.log(error.data);
+            localStorage.removeItem('token')
+            dispatch(setIsFetching(false));
+          })
+    }
+  }
+
+export const loginThunkCreator = (email, password) => {
+    return (dispatch) => {
+            dispatch(setIsFetching(true));
+            authAPI.makeLogin(email, password).then(response => {
+            dispatch(setUserData(response.data));
+            localStorage.setItem('token', response.data.token);
+            dispatch(setAlertMessage("Вы успешно вошли"));
+            dispatch(setIsFetching(false));
+        }).catch((error) => {
+                if (error.response.data.message) {
+                    dispatch(setErrorMessage(error.response.data.message));
+                }
+                dispatch(setIsFetching(false));
+            })
+    }
+}
+
+export const registrationThunkCreator = (name, email, password, prof) => {
+    return (dispatch) => {
+            dispatch(setIsFetching(true));
+            authAPI.makeRegistration(name, email, password, prof).then(response => {
+                dispatch(setAlertMessage(response.data.message));
+                dispatch(setIsFetching(false));
+        }).catch((error) => {
+                if (error.response.data.message) {
+                    dispatch(setErrorMessage(error.response.data.message));
+                }
+                dispatch(setIsFetching(false));
+            })
+    }
+}
 
 export default authReducer;
