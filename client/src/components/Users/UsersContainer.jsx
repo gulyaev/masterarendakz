@@ -40,6 +40,7 @@ class UsersContainer extends React.Component {
                         pagesCount={pagesCount}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
+                        isAuth={this.props.isAuth}
                     />
                 }
             </>
@@ -55,6 +56,7 @@ let mapStateToProps = (state) => {
         perPage: state.usersPage.perPage,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        isAuth: state.auth.isAuth,
     }
 }
 
