@@ -4,7 +4,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
 const SET_IS_FETCHING = "SET-IS-FETCHING";
 const INITIAL_USERS = "INITIAL-USERS";
-
+const SET_IS_FOLLOWING = 'SET-IS-FOLLOWING';
 
 let initialState = {
     usersData: [],
@@ -12,6 +12,7 @@ let initialState = {
     perPage: 7,
     currentPage: 1,
     isFetching: false,
+    isFollowing: []
 };
 
 
@@ -28,12 +29,8 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 usersData: state.usersData.map( u => {
-                    if (u.id == action.payload){ 
-                        u.followings.forEach((element) => {
-                            if(element == u.id){
-                                return {...u, followed: true};
-                            }
-                        });
+                    if (action.payload.followings(id => id === u.id)) {
+                        return {...u, followed: true};
                     }
                     return u;
                 })
@@ -68,6 +65,13 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.payload
             }
+        case SET_IS_FOLLOWING:
+            return {
+                ...state,
+                isFollowing: action.isFollowing 
+                    ? [...state.isFollowing, action.userId] 
+                    : state.isFollowing.filter(id=>id !== action.userId)
+            }
         default: 
             return state;
     }    
@@ -80,6 +84,8 @@ export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page });
 export const setIsFetching = (value) => ({ type: SET_IS_FETCHING, payload: value });
-export const initialUsers = (myId) => ({type: INITIAL_USERS, payload: myId});
+export const initialUsers = (me) => ({type: INITIAL_USERS, payload: me});
+export const setIsFollowing = (isFollowing, userId) => ({type: SET_IS_FOLLOWING, isFollowing: isFollowing, userId: userId});
+
 
 export default usersReducer;

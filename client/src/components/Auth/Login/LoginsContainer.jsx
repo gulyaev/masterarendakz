@@ -29,13 +29,13 @@ const LoginsContainer = (props) => {
                 email,
                 password
             });
-            props.setIsFetching(false);
             props.setUserData(response.data)
             localStorage.setItem('token', response.data.token);
             props.setAlertMessage("Вы успешно вошли")
             if (props.alertMessage) {
                 formSuccess();
             }
+            props.setIsFetching(false);
         } catch (error) {
             if (error.response.data.message) {
                 props.setErrorMessage(error.response.data.message);

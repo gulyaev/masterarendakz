@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { follow, unfollow, setIsFetching } from "../../redux/users-reducer";
+import { follow, unfollow, setIsFollowing } from "../../redux/users-reducer";
 import User from "./User";
 import { connect } from "react-redux";
 
@@ -14,9 +14,9 @@ const UserContainer = (props) => {
         const config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         };
-        props.setIsFetching(true);
+        props.setIsFollowing(true, u_id);
         axios.put(`http://localhost:5000/api/follow`, bodyParameters, config).then((res) => {
-            props.setIsFetching(false);
+            props.setIsFollowing(false, u_id);
             console.log(res.data);
         });
     };
@@ -28,9 +28,9 @@ const UserContainer = (props) => {
         const config = {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         };
-        props.setIsFetching(true);
+        props.setIsFollowing(true, u_id);
         axios.put(`http://localhost:5000/api/unfollow`, bodyParameters, config).then((res) => {
-            props.setIsFetching(false);
+            props.setIsFollowing(false, u_id);
             console.log(res.data);
         });
     };
@@ -55,14 +55,16 @@ const UserContainer = (props) => {
             isFetching={props.isFetching}
             myId={props.myId}
             followings={props.followings}
-            followedlocal={followedlocal} />
+            followedlocal={followedlocal}
+            isFollowing={props.isFollowing} />
     )
 }
 
 let mapStateToProps = (state) => {
     return {
         isFetching: state.usersPage.isFetching,
+        isFollowing: state.usersPage.isFollowing,
     }
 }
 
-export default connect(mapStateToProps, { setIsFetching, follow, unfollow })(UserContainer);
+export default connect(mapStateToProps, { setIsFollowing, follow, unfollow })(UserContainer);

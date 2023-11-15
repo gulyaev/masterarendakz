@@ -12,13 +12,13 @@ const User = (props) => {
             {
                 props.followedlocal
                     ?
-                    <Button
+                    <Button loading={props.isFollowing.some(id => id === props.id)}
                         onClick={() => props.followUnfollowHandler()}
                         type="primary" size="small">
                         Отписаться
                     </Button>
                     :
-                    <Button
+                    <Button loading={props.isFollowing.some(id => id === props.id)}
                         onClick={() => props.followUnfollowHandler()}
                         type="primary" size="small">
                         Подписаться

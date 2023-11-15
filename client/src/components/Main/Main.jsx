@@ -27,7 +27,6 @@ import SidebarMenu from "../SidebarMenu/SidebarMenu";
 
 const Main = (props) => {
     const isAuth = useSelector(state => state.auth.isAuth);
-
     return (
         <div className={classes.main}>
             <aside className={classes.sidebar}>

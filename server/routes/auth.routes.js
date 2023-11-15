@@ -83,7 +83,7 @@ router.get("/me", authMiddleware, async (req, res) => {
               user: {
                 id: user.rows[0].id,
                 email: user.rows[0].email,
-                nikname: user.rows[0].nikname,
+                followings: user.rows[0].followings
               },
             });
           }

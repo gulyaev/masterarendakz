@@ -57,6 +57,7 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+    debugger
     return {
         usersData: state.usersPage.usersData,
         totalUsersCount: state.usersPage.totalUsersCount,
