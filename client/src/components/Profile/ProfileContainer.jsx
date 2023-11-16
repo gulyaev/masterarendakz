@@ -8,7 +8,6 @@ import { withRouter } from "../../hoc/withRouter";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        debugger;
         let userId = this.props.params.id;
         if (!userId) {//если не определен
             userId = 8;//то захардкодим 8
