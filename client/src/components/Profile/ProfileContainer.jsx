@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import axios from 'axios';
 import { setIsFetching, setUserProfile } from "../../redux/profile-reducer";
-import { useParams } from "react-router-dom";
+import { withRouter } from "../../hoc/withRouter";
+
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -27,17 +28,6 @@ class ProfileContainer extends React.Component {
         )
     }
 }
-
-const withRouter = WrappedComponent => props => {
-    const params = useParams();
-
-    return (
-        <WrappedComponent
-            {...props}
-            params={params}
-        />
-    );
-};
 
 
 let mapStateToProps = (state) => {

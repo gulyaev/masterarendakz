@@ -6,10 +6,6 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 import { MDBInput } from 'mdb-react-ui-kit';
 
 const Dialogs = (props) => {
-    //useEffect(() => {
-    //let myInput = document.getElementById('form1');
-    //myInput.focus()
-    //})
 
     let dialogsElements = props.dialogsData.map((dialogItem, index) => <DialogItem key={index} name={dialogItem.name} id={dialogItem.id} />)
     let messagesElements = props.messagesData.map((messagesItem, index) => <Message key={index} name={messagesItem.name} message={messagesItem.message} id={messagesItem.id} />)
@@ -37,7 +33,7 @@ const Dialogs = (props) => {
                         {messagesElements}
                     </div>
                     <div>
-                        <MDBInput ref={newMessageElement} onChange={onMessageChange} label='Введите текст' id='form1' type='text' value={props.newMessageText} />
+                        <MDBInput ref={newMessageElement} onChange={onMessageChange} label='Введите текст' type='text' value={props.newMessageText} />
                         <MDBBtn onClick={addMessage}>Добавить пост</MDBBtn>
                     </div>
                 </div>
