@@ -5,6 +5,7 @@ import { setCurrentPage, getUsersThunkCreator, initialUsers } from "../../redux/
 import Preloader from "../common/Preloader";
 import UserContainer from "./UserContainer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -49,8 +50,6 @@ class UsersContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponentContainer = withAuthRedirect(UsersContainer);
-
 let mapStateToProps = (state) => {
     return {
         usersData: state.usersPage.usersData,
@@ -61,8 +60,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    setCurrentPage,
-    getUsersThunkCreator,
-    initialUsers
-})(AuthRedirectComponentContainer)
+export default compose(
+    connect(mapStateToProps, {
+        setCurrentPage,
+        getUsersThunkCreator,
+        initialUsers
+    }),
+    withAuthRedirect)(UsersContainer)
