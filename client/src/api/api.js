@@ -30,3 +30,24 @@ export const usersAPI = {
         return instance.put(`unfollow`, bodyParameters, config).then(response => response.data);
     }
 }
+
+export const profileAPI = {
+    getUserProfile(userId){
+        return instance.get(`user/${userId}`).then(response => response.data);
+    },
+
+    getStatus(userId){
+        return instance.get(`user/status/${userId}`).then(response => response.data);
+    },
+
+    updateStatus (status) {
+        const bodyParameters = {
+            status,
+          };
+          const config = {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          };
+      
+        return instance.put(`user/status`, bodyParameters, config).then(response => response.data);
+    }
+}

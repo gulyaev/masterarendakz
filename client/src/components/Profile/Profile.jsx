@@ -12,7 +12,7 @@ class Profile extends React.Component {
                 <div style={{ marginBottom: "10px" }}>
                     {this.props.profile.name}
                 </div>
-                <ProfileStatus status={"Мой статус -"} />
+                <ProfileStatus status={this.props.status} updateStatus={this.props.updateStatus} />
             </>
         )
     }

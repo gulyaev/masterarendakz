@@ -2,19 +2,28 @@ import React from "react";
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    activateEditMode() {
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
+    activateEditMode = () => {
+        console.log("this " + this);
         this.setState({
             editMode: true
         });
     }
 
-    deactivateEditMode() {
+    deactivateEditMode = () => {
         this.setState({
             editMode: false
         });
+        this.props.updateStatus(this.state.status)
     }
 
     render() {
@@ -23,13 +32,13 @@ class ProfileStatus extends React.Component {
                 {
                     this.state.editMode &&
                     <div>
-                        <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} style={{ border: "1px solid black", padding: "2px 0 2px 2px", width: "300px", borderRadius: "4px" }} id="status" type="text" value={this.props.status} />
+                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} style={{ border: "1px solid black", padding: "2px 0 2px 2px", width: "300px", borderRadius: "4px" }} id="status" type="text" value={this.state.status} />
                     </div>
                 }
                 {
                     !this.state.editMode &&
-                    <div onDoubleClick={this.activateEditMode.bind(this)} style={{ marginBottom: "5px" }}>
-                        {this.props.status}
+                    <div onDoubleClick={this.activateEditMode} style={{ marginBottom: "5px" }}>
+                        {this.props.status || "No status"}
                     </div>
                 }
             </>

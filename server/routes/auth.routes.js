@@ -43,7 +43,6 @@ router.post('/login', async (req, res) => {
             if (!user.rows[0]) {
                 return res.status(404).json({ message: "Пользователь не найден" })
             } else {
-                console.log("Here")
                 const isPassValid = bcrypt.compareSync(password, user.rows[0].password)
                 if (!isPassValid) {
                     return res.status(400).json({ message: 'Неверный пароль' })

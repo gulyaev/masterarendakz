@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import axios from 'axios';
-import { setIsFetching, setUserProfile } from "../../redux/profile-reducer";
+import { setIsFetching, setUserProfile, setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/profile-reducer";
 import { withRouter } from "../../hoc/withRouter";
+import { compose } from "redux";
 
 
 class ProfileContainer extends React.Component {
@@ -13,17 +13,17 @@ class ProfileContainer extends React.Component {
             userId = 8;//то захардкодим 8
         }
 
-        this.props.setIsFetching(true)
-        axios.get(`http://localhost:5000/api/user/${userId}`)
-            .then(response => {
-                this.props.setIsFetching(false)
-                this.props.setUserProfile(response.data);
-            });
+        this.props.setUserProfileThunkCreator(userId);
+        this.props.getStatusThunkCreator(userId);
+    }
+
+    updateStatus = (status) => {
+        this.props.updateStatusThunkCreator(status)
     }
 
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} updateStatus={this.updateStatus} />
         )
     }
 }
@@ -31,13 +31,18 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
-let WithURLDataContainerComponent = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, {
-    setIsFetching,
-    setUserProfile
-})(WithURLDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, {
+        setIsFetching,
+        setUserProfile,
+        setUserProfileThunkCreator,
+        getStatusThunkCreator,
+        updateStatusThunkCreator
+    }),
+    withRouter
+)(ProfileContainer);
