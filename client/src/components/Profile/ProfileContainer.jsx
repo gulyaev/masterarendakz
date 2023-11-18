@@ -44,5 +44,5 @@ export default compose(
         getStatusThunkCreator,
         updateStatusThunkCreator
     }),
-    withRouter
+    withRouter,
 )(ProfileContainer);
