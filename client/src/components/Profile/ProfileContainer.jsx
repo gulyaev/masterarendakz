@@ -5,6 +5,7 @@ import { setIsFetching, setUserProfile, setUserProfileThunkCreator, getStatusThu
 import { withRouter } from "../../hoc/withRouter";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { getAuthorizedUserId, getProfile, getStatus } from "../../redux/profile-selectors";
 
 
 class ProfileContainer extends React.Component {
@@ -34,9 +35,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status,
-        authorizedUserId: state.auth.userData.id
+        profile: getProfile(state),
+        status: getStatus(state),
+        authorizedUserId: getAuthorizedUserId(state),
     }
 }
 
