@@ -1,24 +1,33 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import "./css/App.css";
-import { authThunkCreator } from "./redux/auth-reducer";
-import { useDispatch } from "react-redux";
+import { initializeAppThunkCreator } from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader";
+import { connect } from "react-redux";
 
-const App = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(authThunkCreator())
-  }, [])
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeAppThunkCreator();
+  }
 
-  return (
-    <div className="wrapper">
-      <Header />
-      <Main dispatch={props.dispatch} />
-      <Footer />
-    </div>
-  );
+  render() {
+    if (!this.props.initialized) {
+      return <Preloader />
+    }
+    return (
+      <div className="wrapper">
+        <Header />
+        <Main dispatch={this.props.dispatch} />
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;
+let mapStateToProps = (state) => (
+  { initialized: state.app.initialized }
+);
+
+export default connect(mapStateToProps, { initializeAppThunkCreator })(App);

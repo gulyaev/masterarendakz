@@ -11,7 +11,7 @@ let mapStateToPropsForRedirect = (state) => {
 export const withAuthRedirect = (Component) => {
     let AuthRedirectComponentContainer = (props) => {
         if (!props.isAuth) {
-            alert("Войдите чтобы посмотреть раздел пользователи");
+            alert("Войдите чтобы посмотреть данный раздел");
             return <Navigate to={"/login"} />;
         }
         return <Component {...props} />

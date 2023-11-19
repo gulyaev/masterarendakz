@@ -101,7 +101,14 @@ const SidebarMenu = (props) => {
                             </span>
                         </Menu.Item>
                     }
-
+                    <Menu.Item key="12">
+                        <HomeOutlined style={{ fontSize: '18px' }} />
+                        <span>
+                            <a href="/profile">
+                                Профиль
+                            </a>
+                        </span>
+                    </Menu.Item>
                 </Menu>
             </MediaQuery>
 

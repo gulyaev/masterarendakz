@@ -7,7 +7,7 @@ const SET_ERROR_MESSAGE = "SET-ERROR-MESSAGE";
 const LOGOUT = "LOGOUT";
 
 let initialState = {
-    userData: null,
+    userData: [],
     isAuth: false,
     isFetching: false,
     alertMessage: null,
@@ -59,7 +59,7 @@ export const logout = () => ({ type: LOGOUT });
 export const authThunkCreator = () => {
     return (dispatch) => {
         dispatch(setIsFetching(true));
-        authAPI.makeAuth().then(data => {
+        return authAPI.makeAuth().then(data => {
             dispatch(setUserData(data.user));
             localStorage.setItem('token', data.token);
           }).catch((error) => {
@@ -79,8 +79,10 @@ export const loginThunkCreator = (email, password) => {
             dispatch(setAlertMessage("Вы успешно вошли"));
             dispatch(setIsFetching(false));
         }).catch((error) => {
-                if (error.response.data.message) {
-                    dispatch(setErrorMessage(error.response.data.message));
+                if (error.response.message) {
+                    dispatch(setErrorMessage(error.response.message));
+                } else if (error) {
+                    console.log(error);
                 }
                 dispatch(setIsFetching(false));
             })

@@ -4,15 +4,18 @@ import Profile from "./Profile";
 import { setIsFetching, setUserProfile, setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/profile-reducer";
 import { withRouter } from "../../hoc/withRouter";
 import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.params.id;
         if (!userId) {//если не определен
-            userId = 8;//то захардкодим 8
+            userId = this.props.authorizedUserId;
+            if (!userId) {
+                this.props.navigate("/login");
+            }
         }
-
         this.props.setUserProfileThunkCreator(userId);
         this.props.getStatusThunkCreator(userId);
     }
@@ -32,7 +35,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.userData.id
     }
 }
 
@@ -44,5 +48,6 @@ export default compose(
         getStatusThunkCreator,
         updateStatusThunkCreator
     }),
+    withAuthRedirect,
     withRouter,
 )(ProfileContainer);
