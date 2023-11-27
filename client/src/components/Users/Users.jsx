@@ -1,38 +1,15 @@
 import React from "react";
-import classes from "../../css/Users.module.css";
-import { MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
-import { createPages } from '../../utils/pagesCreator';
+import Paginator2 from "../common/Paginator2";
+import { Typography } from 'antd';
+const { Title } = Typography;
 
-const Users = ({ usersElements, pagesCount, setCurrentPage, currentPage, isAuth }) => {
-    let pages = [];
-    createPages(pages, pagesCount, currentPage);
-
+const Users = ({ usersElements, pagesCount, setCurrentPage, currentPage }) => {
     return (
         <>
+            <Title level={3}>Пользователи:</Title>
             <div style={{ height: "300px" }}>
                 <div style={{ minHeight: "100px" }}>{usersElements}</div>
-                <div className={classes.pages}>
-                    <MDBPagination className='mb-0'>
-                        <MDBPaginationItem disabled>
-                            <MDBPaginationLink href='#' tabIndex={-1} aria-disabled='true'>
-                                Previous
-                            </MDBPaginationLink>
-                        </MDBPaginationItem>
-                        {pages.map((p, index) => {
-                            return (
-                                <span key={index}
-                                    onClick={() => setCurrentPage(p)}>
-                                    <MDBPaginationItem className={classes.paginationItemStyle} >
-                                        <MDBPaginationLink className={currentPage == p ? classes.actived : classes.paginationLinkStyle}>{p}</MDBPaginationLink>
-                                    </MDBPaginationItem>
-                                </span>
-                            )
-                        })}
-                        <MDBPaginationItem disabled>
-                            <MDBPaginationLink href='#' tabIndex={+1} aria-disabled='true'>Next</MDBPaginationLink>
-                        </MDBPaginationItem>
-                    </MDBPagination>
-                </div>
+                <Paginator2 pagesCount={pagesCount} setCurrentPage={setCurrentPage} currentPage={currentPage} />
             </div>
         </>
     )

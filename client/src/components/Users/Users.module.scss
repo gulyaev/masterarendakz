@@ -7,14 +7,14 @@
    .page-link {
 	   color: #fff
    }
-   &.page-item {
-	   &.active {
-		   button {
-			   background-color: #772e2e !important;
-			   border-color: #772e2e !important;
-		   }
-	   }
-   }
+//    &.page-item {
+// 	   &.active {
+// 		   button {
+// 			   background-color: #772e2e !important;
+// 			   border-color: #772e2e !important;
+// 		   }
+// 	   }
+//    }
 }
 
 
@@ -22,18 +22,19 @@
 	background-color: green !important;
 	border-radius: 5px;
 
-	&:active {
-		color: #772e2e !important;
-	}
+	// &:active {
+	// 	color: #772e2e !important;
+	// }
 
 	&:hover {
 		background-color: #772e2e !important;
-		color: #fff !important;
 		border-radius: 5px !important;
 		font-weight: bold !important;
+		color: #fff !important;
 	}
 }
 
+//активный
 .actived{
 	background-color: #772e2e !important;
 	color: #fff !important;

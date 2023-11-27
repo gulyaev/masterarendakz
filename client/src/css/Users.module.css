@@ -8,23 +8,16 @@
 .paginationItemStyle .page-link {
   color: #fff;
 }
-.paginationItemStyle.page-item.active button {
-  background-color: #772e2e !important;
-  border-color: #772e2e !important;
-}
 
 .paginationLinkStyle {
   background-color: green !important;
   border-radius: 5px;
 }
-.paginationLinkStyle:active {
-  color: #772e2e !important;
-}
 .paginationLinkStyle:hover {
   background-color: #772e2e !important;
-  color: #fff !important;
   border-radius: 5px !important;
   font-weight: bold !important;
+  color: #fff !important;
 }
 
 .actived {

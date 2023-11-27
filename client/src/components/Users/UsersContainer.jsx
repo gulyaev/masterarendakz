@@ -30,9 +30,9 @@ class UsersContainer extends React.Component {
                 followed={usersItem.followed} />)
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.perPage);
-
         let setCurrentPage = this.props.setCurrentPage;
         let currentPage = this.props.currentPage;
+
         return (
             <>
                 {this.props.isFetching

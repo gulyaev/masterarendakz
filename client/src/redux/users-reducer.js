@@ -10,8 +10,8 @@ const SET_IS_FOLLOWING = 'SET-IS-FOLLOWING';
 
 let initialState = {
     usersData: [],
-    totalUsersCount: 20,
-    perPage: 3,
+    totalUsersCount: 25,
+    perPage: 2,
     currentPage: 1,
     isFetching: false,
     isFollowing: []
