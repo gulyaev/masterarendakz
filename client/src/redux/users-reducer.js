@@ -97,23 +97,24 @@ export const getUsersThunkCreator =(perPage, currentPage) => {
         }
 }
 
-export const followUserThunkCreator =(bodyParameters, config, u_id) => {
-    return (dispatch) => {
-        dispatch(setIsFollowing(true, u_id));
-        usersAPI.followUser(bodyParameters, config).then(data => {
-            dispatch(setIsFollowing(false, u_id));
-            console.log(data);
-        });
+const followUnfollowFlow = async (dispatch, apiMethod, bodyParameters, config, u_id) => {
+    dispatch(setIsFollowing(true, u_id));
+    let data = await apiMethod(bodyParameters, config);
+    dispatch(setIsFollowing(false, u_id));
+    console.log(data);
+}
+
+export const followUserThunkCreator = (bodyParameters, config, u_id) => {
+    return async (dispatch) => {
+        let apiMethod = usersAPI.followUser.bind(usersAPI);
+        followUnfollowFlow(dispatch, apiMethod, bodyParameters, config, u_id)
     }
 }
 
-export const unfollowUserThunkCreator =(bodyParameters, config, u_id) => {
-    return (dispatch) => {
-        dispatch(setIsFollowing(true, u_id));
-        usersAPI.unfollowUser(bodyParameters, config).then(data => {
-            dispatch(setIsFollowing(false, u_id));
-            console.log(data);
-        });
+export const unfollowUserThunkCreator = (bodyParameters, config, u_id) => {
+    return async (dispatch) => {
+        let apiMethod = usersAPI.unfollowUser.bind(usersAPI);
+        followUnfollowFlow(dispatch, apiMethod, bodyParameters, config, u_id)
     }
 }
 

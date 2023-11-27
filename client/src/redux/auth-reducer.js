@@ -56,6 +56,7 @@ export const setAlertMessage = (message) => ({ type: SET_ALERT_MESSAGE, payload:
 export const setErrorMessage = (message) => ({ type: SET_ERROR_MESSAGE, payload: message });
 export const logout = () => ({ type: LOGOUT });
 
+
 export const authThunkCreator = () => {
     return (dispatch) => {
         dispatch(setIsFetching(true));
@@ -68,39 +69,43 @@ export const authThunkCreator = () => {
             dispatch(setIsFetching(false));
           })
     }
-  }
+}
 
 export const loginThunkCreator = (email, password) => {
-    return (dispatch) => {
+    return async (dispatch) => {
             dispatch(setIsFetching(true));
-            authAPI.makeLogin(email, password).then(response => {
-            dispatch(setUserData(response.data));
-            localStorage.setItem('token', response.data.token);
-            dispatch(setAlertMessage("Вы успешно вошли"));
-            dispatch(setIsFetching(false));
-        }).catch((error) => {
+            try {
+                let response = await authAPI.makeLogin(email, password);
+                const {data} = response;
+                dispatch(setUserData(data));
+                localStorage.setItem('token', data.token);
+                dispatch(setAlertMessage("Вы успешно вошли"));
+                dispatch(setIsFetching(false));
+            } catch (error) {
                 if (error.response.message) {
                     dispatch(setErrorMessage(error.response.message));
                 } else if (error) {
                     console.log(error);
                 }
                 dispatch(setIsFetching(false));
-            })
+            }    
     }
 }
 
 export const registrationThunkCreator = (name, email, password, prof) => {
-    return (dispatch) => {
+    return async (dispatch) => {
             dispatch(setIsFetching(true));
-            authAPI.makeRegistration(name, email, password, prof).then(response => {
-                dispatch(setAlertMessage(response.data.message));
+            try {
+                let response = await authAPI.makeRegistration(name, email, password, prof);
+                const {data} = response;
+                dispatch(setAlertMessage(data.message));
                 dispatch(setIsFetching(false));
-        }).catch((error) => {
+            } catch (error) {
                 if (error.response.data.message) {
                     dispatch(setErrorMessage(error.response.data.message));
                 }
                 dispatch(setIsFetching(false));
-            })
+            }
     }
 }
 
