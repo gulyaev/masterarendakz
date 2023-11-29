@@ -2,29 +2,10 @@
     margin-top: 50px;
 }
 
-.paginationItemStyle {
-	margin-left: 5px;
-   .page-link {
-	   color: #fff
-   }
-//    &.page-item {
-// 	   &.active {
-// 		   button {
-// 			   background-color: #772e2e !important;
-// 			   border-color: #772e2e !important;
-// 		   }
-// 	   }
-//    }
-}
-
-
 .paginationLinkStyle {
 	background-color: green !important;
 	border-radius: 5px;
-
-	// &:active {
-	// 	color: #772e2e !important;
-	// }
+	margin-right: 5px !important;
 
 	&:hover {
 		background-color: #772e2e !important;
@@ -34,12 +15,26 @@
 	}
 }
 
+.paginationArrowLinkStyle {
+	font-weight: bold !important;
+	font-size: 14px !important;
+	&:hover {
+		background-color: #ccc !important;
+		border-radius: 5px !important;
+	}
+}
+
+.forMargin {
+	margin-right: 5px !important;
+}
+
 //активный
 .actived{
 	background-color: #772e2e !important;
 	color: #fff !important;
 	border-radius: 5px !important;
 	font-weight: bold !important;
+	margin-right: 5px !important;
 }
 
 

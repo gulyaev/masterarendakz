@@ -3,7 +3,6 @@ import Home from "../Home/Home";
 import Gallery from "../Gallery/Gallery";
 import Services from "../Services/Services";
 import Statistics from "../Statistics/Statistics";
-import DialogsContainer from "../Dialogs/DialogsContainer";
 import classes from "../../css/Main.module.css";
 import { Routes, Route } from "react-router-dom";
 import About from "../About";
@@ -19,11 +18,13 @@ import Forclients from "../Forclients/Forclients";
 import Sales from "../Sales/Sales";
 import Blog3 from "../Blog/Blog3";
 import UsersContainer from "../Users/UsersContainer";
-import ProfileContainer from "../Profile/ProfileContainer";
 import RegistrationsContainer from "../Auth/Registration/RegistrationsContainer";
 import LoginsContainer from "../Auth/Login/LoginsContainer";
 import { useSelector } from "react-redux";
 import SidebarMenu from "../SidebarMenu/SidebarMenu";
+const DialogsContainer = React.lazy(() => import('../Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('../Profile/ProfileContainer'));
+
 
 const Main = (props) => {
     const isAuth = useSelector(state => state.auth.isAuth);
@@ -51,9 +52,18 @@ const Main = (props) => {
                     <Route path="/forsellers" element={<Forsellers />} />
                     <Route path="/forclients" element={<Forclients />} />
                     <Route path="/sales" element={<Sales />} />
-                    <Route path="/dialogs" element={<DialogsContainer />} />
                     <Route path="/users" element={<UsersContainer />} />
-                    <Route path="/profile/:id?" element={<ProfileContainer />} />
+                    <Route path="/dialogs" element={(
+                        <React.Suspense fallback={<div>Загрузка...</div>}>
+                            <DialogsContainer />
+                        </React.Suspense>
+                    )} />
+                    <Route path="/profile/:id?" element={(
+                        <React.Suspense fallback={<div>Загрузка...</div>}>
+                            <ProfileContainer />
+                        </React.Suspense>
+                    )} />
+
                     {!isAuth &&
                         <>
                             <Route path="/registration" element={<RegistrationsContainer />} />

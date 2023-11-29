@@ -2,16 +2,10 @@
   margin-top: 50px;
 }
 
-.paginationItemStyle {
-  margin-left: 5px;
-}
-.paginationItemStyle .page-link {
-  color: #fff;
-}
-
 .paginationLinkStyle {
   background-color: green !important;
   border-radius: 5px;
+  margin-right: 5px !important;
 }
 .paginationLinkStyle:hover {
   background-color: #772e2e !important;
@@ -20,9 +14,23 @@
   color: #fff !important;
 }
 
+.paginationArrowLinkStyle {
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+.paginationArrowLinkStyle:hover {
+  background-color: #ccc !important;
+  border-radius: 5px !important;
+}
+
+.forMargin {
+  margin-right: 5px !important;
+}
+
 .actived {
   background-color: #772e2e !important;
   color: #fff !important;
   border-radius: 5px !important;
   font-weight: bold !important;
+  margin-right: 5px !important;
 }

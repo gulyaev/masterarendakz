@@ -9,7 +9,7 @@ const Paginator2 = ({ pagesCount, currentPage, setCurrentPage, portionSize = 5 }
     }
 
     let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = useState(2);
+    let [portionNumber, setPortionNumber] = useState(1);
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;//левая граница порции
     let rightPortionPageNumber = portionNumber * portionSize;//правая граница порции
 
@@ -18,9 +18,8 @@ const Paginator2 = ({ pagesCount, currentPage, setCurrentPage, portionSize = 5 }
         <div className={classes.pages}>
             <MDBPagination className='mb-0'>
                 {
-                    portionNumber > 1 &&
-                    <MDBPaginationItem onClick={() => setPortionNumber(portionNumber - 1)} >
-                        <MDBPaginationLink href='#' tabIndex={-1} aria-disabled='true'>Назад</MDBPaginationLink>
+                    <MDBPaginationItem disabled={portionNumber > 1 ? false : true} onClick={() => setPortionNumber(portionNumber - 1)} >
+                        <MDBPaginationLink className={classes.paginationArrowLinkStyle + " " + classes.forMargin} href='#' tabIndex={-1} aria-disabled='true'>Назад</MDBPaginationLink>
                     </MDBPaginationItem>
                 }
                 {
@@ -38,9 +37,8 @@ const Paginator2 = ({ pagesCount, currentPage, setCurrentPage, portionSize = 5 }
                         })
                 }
                 {
-                    portionCount > portionNumber &&
-                    <MDBPaginationItem onClick={() => setPortionNumber(portionNumber + 1)}>
-                        <MDBPaginationLink href='#' tabIndex={+1} aria-disabled='true'>Дальше</MDBPaginationLink>
+                    <MDBPaginationItem disabled={portionCount > portionNumber ? false : true} onClick={() => setPortionNumber(portionNumber + 1)}>
+                        <MDBPaginationLink className={classes.paginationArrowLinkStyle} href='#' tabIndex={+1} aria-disabled='true'>Дальше</MDBPaginationLink>
                     </MDBPaginationItem>
                 }
             </MDBPagination>
