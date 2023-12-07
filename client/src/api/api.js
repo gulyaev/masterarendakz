@@ -49,5 +49,13 @@ export const profileAPI = {
           };
       
         return instance.put(`user/status`, bodyParameters, config).then(response => response.data);
+    },
+
+    loadAvatar (formData) {
+        const config = {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        };
+      
+        return instance.post(`/avatar`, formData, config).then(response => response.data.avatar);
     }
 }

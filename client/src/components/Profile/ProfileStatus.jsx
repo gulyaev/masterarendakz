@@ -46,6 +46,7 @@ class ProfileStatus extends React.Component {
                 {
                     !this.state.editMode &&
                     <div onDoubleClick={this.activateEditMode} style={{ marginBottom: "5px" }}>
+                        <span style={{ fontWeight: "bold" }}>Мой статус: </span>
                         {this.props.status || "No status"}
                     </div>
                 }

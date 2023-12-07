@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { setIsFetching, setUserProfile, setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/profile-reducer";
+import { setIsFetching, setUserProfile, setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator, saveAvatarThunkCreator } from "../../redux/profile-reducer";
 import { withRouter } from "../../hoc/withRouter";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { getAuthorizedUserId, getProfile, getStatus } from "../../redux/profile-selectors";
+import { getAuthorizedUserId, getAvatar, getProfile, getStatus } from "../../redux/profile-selectors";
+import Preloader from "../common/Preloader";
 
 
 class ProfileContainer extends React.Component {
@@ -25,9 +26,23 @@ class ProfileContainer extends React.Component {
         this.props.updateStatusThunkCreator(status)
     }
 
+    saveAvatar = (formData) => {
+        this.props.saveAvatarThunkCreator(formData)
+    }
+
     render() {
+        if (!this.props.profile) {
+            return <Preloader />
+        }
         return (
-            <Profile {...this.props} updateStatus={this.updateStatus} />
+            <Profile
+                {...this.props}
+                updateStatus={this.updateStatus}
+                saveAvatar={this.saveAvatar}
+                isOwner={!this.props.params.id}
+                avatarFromProfile={this.props.profile.avatar}
+                newAvatar={this.props.avatar}
+            />
         )
     }
 }
@@ -38,6 +53,7 @@ let mapStateToProps = (state) => {
         profile: getProfile(state),
         status: getStatus(state),
         authorizedUserId: getAuthorizedUserId(state),
+        avatar: getAvatar(state)
     }
 }
 
@@ -47,7 +63,8 @@ export default compose(
         setUserProfile,
         setUserProfileThunkCreator,
         getStatusThunkCreator,
-        updateStatusThunkCreator
+        updateStatusThunkCreator,
+        saveAvatarThunkCreator
     }),
     withAuthRedirect,
     withRouter,

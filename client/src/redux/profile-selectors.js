@@ -2,6 +2,10 @@ export const getProfile = (state) => {
     return state.profilePage.profile;
 }
 
+export const getAvatar = (state) => {
+    return state.profilePage.avatar;
+}
+
 export const getStatus = (state) => {
     return state.profilePage.status;
 }

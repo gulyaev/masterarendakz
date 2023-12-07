@@ -1,0 +1,11 @@
+.loadavatar {
+  border: 1px solid #008000;
+  width: 130px;
+  padding: 5px 5px 0 6px;
+  border-radius: 5px;
+}
+
+.loadavatarlabel:hover {
+  cursor: pointer;
+  color: #ccc;
+}
